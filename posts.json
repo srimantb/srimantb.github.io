@@ -1,0 +1,17 @@
+[
+    {
+      "title": "Post 1: Understanding JavaScript",
+      "date": "September 1, 2023",
+      "url": "post1.html",
+      "description": "Learn the fundamentals of JavaScript."
+    },
+    {
+      "title": "Post 2: CSS Grid vs Flexbox",
+      "date": "August 15, 2023",
+      "url": "post2.html",
+      "description": "Which layout system is better for your project?"
+    }
+    
+  ]
+
+  
