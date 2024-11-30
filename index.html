@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Hacker-Themed Website</title>
+  <title>sri.in</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png">
   <link rel="stylesheet" href="style.css">
   
 </head>
@@ -12,11 +13,11 @@
   <div class="sidebar">
     <img src="1.png" alt="Your Image">
     <h1>Your Name</h1>
-    <a href="#home">Home</a>
+    <a href="index.html">Home</a>
     <a href="#about">About</a>
     <a href="#writeups">Writeups</a>
     <a href="#tools">Tools</a>
-    <a href="#notes">Notes</a>
+    <a href="https://srimantb.github.io/notes">Notes</a>
     <a href="#coffee">Buy Me a Coffee</a>
     <a href="#upi">UPI ID</a>
   </div>
@@ -29,17 +30,20 @@
     <div class="navbar">
       <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
       <span id="span"></span>
-      <input class="searchbar" type="text" id="searchBar" placeholder="Search Articles..." onkeyup="searchArticles()" onclick="searchArticles()">
+      <input class="searchbar" type="text" id="searchBar" placeholder="Search..." onkeyup="searchArticles()" onclick="searchArticles()">
     </div>
    
     <!-- Content Area -->
     <div class="main">
-      <h2>Welcome to Your Website</h2>
-      <p>This area is scrollable and will display your content based on the selected section.</p>
-      <p>More content...</p>
+      <h2>Hey welcome</h2>
+      <p>Welcome to my corner of the web! Here, <br>
+        I share what little knowledge I think I have about hacking & cybersecurity! <br>
+        Here, you'll find write-ups on CTFs, insights into CVEs, cybersecurity tools,<br>
+        and articles on hacking. <br> <br>
+        This is my space to document the knowledge I've gained.</p>
+      <p>I hope it helps others on their path to mastering cybersecurity.</p>
       
 
-      <h2>Articles</h2>
       <div id="articles">
         <div class="article" data-tags="linux hacking, security, pentesting">
           <a href="#linux-hacking-article">Linux Hacking Basics</a>
@@ -64,13 +68,6 @@
     </div>
   </div>
 
-  <script>
-    // Toggle Sidebar for Mobile
-    function toggleSidebar() {
-      const sidebar = document.querySelector('.sidebar');
-      sidebar.classList.toggle('show');
-    }
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
