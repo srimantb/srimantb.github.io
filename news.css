@@ -1,0 +1,81 @@
+/* News section */
+.news-section {
+position: fixed;
+top: 60px; /* Align under search bar */
+right: -100%; /* Hidden off-screen by default */
+width: 75%;
+height: calc(100% - 60px); /* Adjust for search bar height */
+background-color: #282828;
+padding: 20px;
+box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+overflow-y: auto;
+transition: transform 0.3s ease, right 0.3s ease;
+}
+.news-section.open {
+transform: translateX(-100%);
+}
+
+.news-section h2 {
+    color: #00ff00;
+}
+
+.news-card {
+    background-color: #333;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .news-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+    /* Search bar */
+    .search-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1c1c1c;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+    /* Swipe indicator */
+    .swipe-indicator {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: #00ff00;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.9em;
+        display: flex;
+        /* Only visible on small screens */
+}
+
+@media (max-width: 768px) {
+        .swipe-indicator {
+        display: block;
+        }
+        .news-section{
+            z-index: 900; /* Lower z-index for news section */
+        }
+
+        .sidebar {
+        display: none; /* Hide sidebar on small screens */
+        }
+        
+    }
+@media (min-width: 769px) {
+    .news-section {
+    z-index: 900; /* Lower z-index for news section */
+    right: 0; /* Make it visible */
+    width: 25%; /* Adjust width for desktop layout */
+    transform: none; /* Reset transform */
+    position: fixed; /* Ensure it stays fixed */
+    }
+}

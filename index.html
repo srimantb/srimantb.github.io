@@ -11,7 +11,9 @@
 <body>
   <!-- Sidebar -->
   <div class="sidebar">
-    <img src="1.png" alt="Your Image">
+    <div class="image-container">
+      <img src="1.png" alt="Your Image">
+    </div>
     <h1>Srimant</h1>
     <a href="index.html">Home</a>
     <a href="#about">About</a>
@@ -32,7 +34,11 @@
       <span id="span"></span>
       <input class="searchbar" type="text" id="searchBar" placeholder="Search..." onkeyup="searchArticles()" onclick="searchArticles()">
     </div>
-   
+
+
+    <div class="search-results" id="searchResults" style="display: none;">
+      <!-- Cards will be generated dynamically here -->
+    </div>
     <!-- Content Area -->
     <div class="main">
       <h2>Hey welcome</h2>
@@ -42,6 +48,28 @@
         and articles on hacking. <br> <br>
         This is my space to document the knowledge I've gained.</p>
       <p>I hope it helps others on their path to mastering cybersecurity.</p>
+
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         
+
+      </p>
       
 
       <div id="articles">
@@ -57,14 +85,47 @@
           <a href="#advanced-hacking-techniques">Advanced Linux Hacking Techniques</a>
           <p>Learn advanced techniques for exploiting Linux systems.</p>
         </div>
+        <div class="article" data-tags="cybersecurity, hacking, linux">
+          <a href="#advanced-hacking-techniques">Advanced Linux Hacking Techniques</a>
+          <p>Learn advanced techniques for exploiting Linux systems.</p>
+        </div>
+        <div class="article" data-tags="cybersecurity, windows, linux">
+          <a href="#advanced-hacking-techniques">Advanced windows Hacking Techniques</a>
+          <p>Learn advanced techniques for exploiting windows systems.</p>
+        </div>
+        <div class="article" data-tags="cybersecurity, windows, linux">
+          <a href="#advanced-hacking-techniques">Advanced windows Hacking Techniques</a>
+          <p>Learn advanced techniques for exploiting windows systems.</p>
+        </div>
         <!-- More articles can be added here -->
       </div>
     </div>
   
-    <!-- Search Results Section -->
-    <div class="search-results" id="searchResults"></div>
+    
+
   
-      <!-- Add more content as needed -->
+    
+    
+    <!-- News Section -->
+  <div class="news-section" id="newsSection">
+    <h2>Top News of the Cyber World</h2>
+    <div class="news-card">
+      <h3>News One</h3>
+      <p>Cybersecurity breach detected in a major tech company...</p>
+    </div>
+    <div class="news-card">
+      <h3>News Two</h3>
+      <p>New malware targeting IoT devices has been discovered...</p>
+    </div>
+    <div class="news-card">
+      <h3>News Three</h3>
+      <p>Top 10 tips to secure your personal data online...</p>
+    </div>
+  </div>
+  <!-- Swipe Indicator -->
+  <div class="swipe-indicator"></div>
+
+  
     </div>
   </div>
 

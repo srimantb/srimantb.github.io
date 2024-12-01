@@ -7,22 +7,38 @@ body {
     background-color: #1e1e1e;
     display: flex;
 }
-.breadcrumbs {
-    background-color: #333;
-    color: #13e913;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* ####################################### Image animation Logo */
+.image-container {
+    margin-left: 15%;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .breadcrumbs a {
-    color: #39c939;
-    text-decoration: none;
+  .image-container img {
+    padding-left: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid #2a3d5f;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+
+  .image-container:hover {
+    transform: scale(1.2); /* Makes the container pop out */
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.4); /* Adds shadow for depth */
+  }
+
+  .image-container img:hover {
+    transform: scale(2.2); /* Makes the image pop slightly more */
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.4);
+  }
+
+
+/* ################################### Searchbar */
 #searchBar {
+    
     width: 20%;
     padding: 10px;
     border: none;
@@ -31,30 +47,48 @@ body {
     color: #39c939;
     background-color: #444444;
     }
+/* search */
 
 .search-results {
-
-    position: absolute;
-    top: 60px; /* Position the results directly below the search bar */
-    left: 18%;
-    right: -20%;
-    width: 80%;
-    /* background-color: #333; */
-    padding: 0 0;
-    /* border-radius: 5px; */
-    max-height: 300px;
+    position: fixed;
+    top: 7.9%;
+    left: 15.9%;
+    width: 53.9%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black */
+    padding: 20px;
     overflow-y: auto;
-    display: none; /* Hide initially */
-    z-index: 999; /* Ensure it appears above other content */
+    z-index: 999; /* Ensure it's above other content */
+    display: none; /* Hidden initially */
+
+    /* Add CSS Grid for layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust card size dynamically */
+    gap: 15px; /* Space between cards */
 }
 
-.search-results a {
-    display: flex;
-    color: #c24a12;
-    text-decoration: none;
-    /* padding-left: 100px; */
-    margin: 5px 0;
-    margin-left: 70%;
+.search-results .card {
+    background-color: #282828;
+    color: #e5eee5;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-results .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.search-results h3 {
+    margin-bottom: 10px;
+    color: #39c939;
+}
+
+.search-results p {
+    margin: 0;
+    color: #c4c4c4;
 }
 
 a {
@@ -82,8 +116,9 @@ text-decoration: none;
     visibility: hidden;
 }
 
-/* Sidebar */
+/* ########################################## Sidebar */
 .sidebar {
+
     width: 250px;
     background-color: #2b2b2b;
     height: 100vh;
@@ -99,6 +134,8 @@ text-decoration: none;
 }
 
 .sidebar img {
+    margin-top: 40%;
+    padding-left: 10px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -107,7 +144,7 @@ text-decoration: none;
 }
 
 .sidebar h1 {
-    margin: 0;
+    margin: 30%;
     font-size: 20px;
     margin-bottom: 20px;
     text-align: center;
@@ -118,7 +155,7 @@ text-decoration: none;
     margin: 10px 0;
 }
 
-/* Top Navbar */
+/* #########################  Top Navbar */
 .navbar {
     width: calc(100% - 250px);
     height: 50px;
@@ -150,6 +187,7 @@ text-decoration: none;
 
 /* Main Content */
 .main {
+    width: 55%;
     margin-top: 50px;
     margin-left: 250px;
     padding: 20px;
@@ -175,7 +213,54 @@ text-decoration: none;
     background-color: #444444;
 }
 
+/* ##################################  News Section */
+.news-section {
+    position: fixed;
+    top: 60px; /* Align under search bar */
+    right: -100%; /* Hidden off-screen by default */
+    width: 75%;
+    height: 100%;
+   
+    background-color: #282828;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .news-section.open {
+    transform: translateX(-100%);
+  }
+
+  .news-section h2 {
+    color: #00ff00;
+  }
+
+  .news-card {
+    background-color: #333;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .news-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+  }
+
 /* Animations */
+/* image animation */
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+/* end image */
 @keyframes fadeIn {
     from {
     opacity: 0;
@@ -195,6 +280,16 @@ text-decoration: none;
     opacity: 1;
     }
 }
+/* News show on bigscreen */
+@media screen and (min-width: 1300px) {
+    .news-section {
+      right: 0; /* Make it visible */
+      width: 25%; /* Adjust width for desktop layout */
+      transform: none; /* Reset transform */
+      position: fixed; /* Ensure it stays fixed */
+      
+    }
+  }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
@@ -208,7 +303,8 @@ text-decoration: none;
     left: 200px;
     }
     .main {
-    margin-left: 200px;
+    margin-left: 0;
+    width: 100%;
     }
     .navbar .breadcrumbs {
     margin-left: 30%;
@@ -228,7 +324,6 @@ text-decoration: none;
     }
 
     .search-results {
-
         position: absolute;
         top: 60px; /* Position the results directly below the search bar */
         left: 10%;
@@ -236,7 +331,7 @@ text-decoration: none;
         width: 80%;
         background-color: #333;
         padding: 5px 10px;
-        /* border-radius: 5px; */
+        border-radius: 5px;
         max-height: 300px;
         overflow-y: auto;
         display: none; /* Hide initially */
@@ -254,8 +349,36 @@ text-decoration: none;
     #span{
         margin-left: 28%;
     }
+    .swipe-indicator {
+        display: block;
+      }
 
-    
+      .news-section {
+        position: fixed;
+        top: 60px; /* Align under search bar */
+        right: -80%; /* Hidden off-screen by default */
+        width: 70%;
+        height: calc(100% - 60px); /* Adjust for search bar height */
+        background-color: #282828;
+        padding: 20px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+        transition: transform 0.3s ease;
+      }
+
+      .search-results {
+        position: fixed;
+        top: 6%;
+        left: 0%;
+        width: 89%;
+        height: 1000%;
+        background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black */
+        padding: 20px;
+        overflow-y: auto;
+        z-index: 999; /* Ensure it's above other content */
+        display: none; /* Hidden initially */
+    }
+
 
 }
 
@@ -289,6 +412,32 @@ text-decoration: none;
     top: 1px;
     left: 10px;
     z-index: 1100;
+    }
+
+    .search-results {
+        position: fixed;
+        left: 1.9%;
+        width: 85%;
+        background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black */
+        padding-top: 0;
+        padding-block: 155px;
+        overflow-y: auto;
+        z-index: 999; /* Ensure it's above other content */
+        display: none; /* Hidden initially */
+    
+        /* Add CSS Grid for layout */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust card size dynamically */
+        gap: 15px; /* Space between cards */
+    }
+    
+    .search-results .card {
+        background-color: #282828;
+        color: #e5eee5;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     
    

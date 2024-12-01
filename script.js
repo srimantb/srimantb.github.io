@@ -23,64 +23,83 @@ setInterval(time, 1000);
 
 // Function to perform search and display results
 function searchArticles() {
-    const input = document.getElementById('searchBar').value.toLowerCase();
-    const articles = document.querySelectorAll('.article');
-    const searchResultsDiv = document.getElementById('searchResults');
+  const searchBar = document.getElementById("searchBar");
+  const searchResults = document.getElementById("searchResults");
+  const articles = document.querySelectorAll(".article");
 
-    // Clear previous search results
-    searchResultsDiv.innerHTML = '';
+  const query = searchBar.value.toLowerCase();
+  searchResults.innerHTML = ""; // Clear previous results
 
-    // If search input is empty, hide the results
-    if (input === '') {
-      searchResultsDiv.style.display = 'none';
-      return;
-    }
+  if (query.trim() !== "") {
+    articles.forEach((article) => {
+      const tags = article.getAttribute("data-tags").toLowerCase();
+      if (tags.includes(query)) {
+        const card = document.createElement("div");
+        card.className = "card";
 
-    let resultsFound = false; // Track if any results are found
+        const title = document.createElement("h3");
+        title.textContent = article.querySelector("a").textContent;
 
-    articles.forEach(function(article) {
-      const tags = article.getAttribute('data-tags').toLowerCase();
-      const title = article.querySelector('a').innerText.toLowerCase();
+        const description = document.createElement("p");
+        description.textContent = article.querySelector("p").textContent;
 
-      // Check if tags or title match the search input
-      if (tags.includes(input) || title.includes(input)) {
-        resultsFound = true;
-        const link = article.querySelector('a').cloneNode(true); // Clone the link
-        
-        // Add event listener to hide results when a link is clicked
-        link.addEventListener('click', function() {
-          searchResultsDiv.style.display = 'none';  // Hide results on click
-          document.getElementById('searchBar').value = '';  // Clear search bar
-        });
-
-        searchResultsDiv.appendChild(link); // Append the link to the search results
+        card.appendChild(title);
+        card.appendChild(description);
+        searchResults.appendChild(card);
       }
     });
 
-    // Display search results if found, otherwise hide the search box
-    if (resultsFound) {
-      searchResultsDiv.style.display = 'block';
-    } else {
-      searchResultsDiv.style.display = 'none';
-    }
+    searchResults.style.display = "block";
+  } else {
+    searchResults.style.display = "none";
   }
+}
 
-  // Optional: Close search results when the user clicks outside the search box
-  window.addEventListener('click', function(e) {
-    const searchBar = document.getElementById('searchBar');
-    const searchResultsDiv = document.getElementById('searchResults');
-    
-    if (!searchBar.contains(e.target) && !searchResultsDiv.contains(e.target)) {
-      searchResultsDiv.style.display = 'none';
-    }
-  });
+// Hide search results on outside click
+document.addEventListener("click", (e) => {
+  const searchBar = document.getElementById("searchBar");
+  const searchResults = document.getElementById("searchResults");
 
-function updateBreadcrumb(page) {
-    document.getElementById('breadcrumb').innerText = page;
+  if (!searchBar.contains(e.target) && !searchResults.contains(e.target)) {
+    searchResults.style.display = "none";
   }
+});
+
 
 // Toggle Sidebar for Mobile
 function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('show');
   }
+
+  // news section
+
+  const newsSection = document.getElementById('newsSection');
+    let startX = 0;
+    let endX = 0;
+
+    // Detect swipe gesture
+    document.body.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    document.body.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+
+      // Swipe left to open the news section
+      if (startX - endX > 50) { // Swipe threshold
+        newsSection.classList.add('open');
+      }
+
+      // Swipe right to close the news section
+      if (endX - startX > 50) { // Swipe threshold
+        newsSection.classList.remove('open');
+      }
+    });
+
+    // Close the news section if clicked outside
+    document.addEventListener('click', (e) => {
+      if (!newsSection.contains(e.target) && !e.target.closest('.search-bar')) {
+        newsSection.classList.remove('open');
+      }
+    });
