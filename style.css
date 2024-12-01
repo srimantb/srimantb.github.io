@@ -1,4 +1,3 @@
-
 /* General Styles */
 body {
     margin: 0;
@@ -155,6 +154,33 @@ text-decoration: none;
     margin: 10px 0;
 }
 
+/* sidebar contact details */
+.social-media {
+    position: absolute; /* Use fixed if you want it always visible */
+    bottom: 30px; /* Distance from the bottom */
+    left: 25px; /* Adjust alignment */
+    display: flex;
+    gap: 15px; /* Space between icons */
+}
+
+.social-media a {
+    font-size: 20px; /* Icon size */
+    color: #ffffff; /* Default color: white */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.social-media a:hover {
+    color: #32cd32; /* Light green color on hover */
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+
+
+
+
+
+
+
 /* #########################  Top Navbar */
 .navbar {
     width: calc(100% - 250px);
@@ -250,63 +276,6 @@ text-decoration: none;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
   }
 
-  /* COntact section about page */
-  .contact-section {
-    align-items: center;
-    padding: 40px;
-    text-align: center;
-    /* background-color: #121212; */
-    /* border-top: 1px solid #39c939; */
-    color: #39c939;
-}
-
-.contact-title {
-    justify-content: center;
-    
-    align-items: center;
-    font-size: 2em;
-    font-family: 'Courier New', Courier, monospace;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.social-links {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Ensures responsiveness */
-    gap: 20px;
-}
-
-.social-link {
-    align-items: center;
-    color: #fafafa;
-    text-decoration: none;
-    font-family: 'Courier New', Courier, monospace;
-    border: 1px solid #39c939;
-    padding: 10px 20px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    flex: 1 1 150px; /* Each link takes at least 150px of width */
-    max-width: 100px;
-}
-
-.social-link:hover {
-    background-color: #39c939;
-    color: #121212;
-}
-
-.social-link i {
-    margin-right: 8px;
-    font-size: 1.2em;
-}
-
-/* Hover effects for different platforms */
-.github:hover { background-color: #39c939; }
-.linkedin:hover { background-color: #0077b5; }
-.twitter:hover { background-color: #1da1f2; }
-.instagram:hover { background-color: #e4405f; }
-
 
 
 
@@ -380,7 +349,7 @@ text-decoration: none;
 
     #searchBar {
         width: 25%;
-        margin-right: 10%;
+        margin-right: 0%;
     }
 
     .search-results {
@@ -437,11 +406,6 @@ text-decoration: none;
         overflow-y: auto;
         z-index: 999; /* Ensure it's above other content */
         display: none; /* Hidden initially */
-    }
-
-    /* contact section about page */
-    .contact-title {
-        font-size: 1.8em;
     }
 
     .social-links {
@@ -503,7 +467,7 @@ text-decoration: none;
         width: 85%;
         background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black */
         padding-top: 0;
-        padding-block: 155px;
+        padding-block: 270px;
         overflow-y: auto;
         z-index: 999; /* Ensure it's above other content */
         display: none; /* Hidden initially */
@@ -523,28 +487,13 @@ text-decoration: none;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     
-    /* contact section about page */
-    .social-link {
-        padding: 6px 10px; /* Reduced padding */
-        font-size: 0.9em; /* Smaller text */
-        margin-bottom: 10px; /* Smaller space between each box */
-        height: auto; /* Allow the height to adjust automatically */
-    }
-
-    .social-link i {
-        font-size: 1.2em; /* Adjust the icon size slightly */
-        margin-right: 5px; /* Adjust spacing between the icon and text */
-    }
-
-    .social-links {
-        gap: 8px; /* Reduce the gap between the boxes */
-    }
-
-    /* Adjust the container for social links */
-    .contact-box {
-        width: 50%; /* Ensure full width */
-        height: 10%;
-        margin: 0 auto; /* Center it */
+    
+    .social-media {
+        position: absolute; /* Use fixed if you want it always visible */
+        bottom: 150px; /* Distance from the bottom */
+        left: 20px; /* Adjust alignment */
+        display: flex;
+        gap: 10px; /* Space between icons */
     }
    
 }
