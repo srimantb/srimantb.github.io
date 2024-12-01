@@ -103,3 +103,46 @@ function toggleSidebar() {
         newsSection.classList.remove('open');
       }
     });
+
+// sidebar stick
+document.addEventListener('DOMContentLoaded', function () {
+  const links = document.querySelectorAll('.sidebar-link');
+  const scrollStick = document.querySelector('.scroll-stick');
+
+  links.forEach((link, index) => {
+    link.addEventListener('mouseenter', () => {
+      // Get the top position of the hovered link
+      const rect = link.getBoundingClientRect();
+      const sidebarRect = link.parentElement.getBoundingClientRect();
+      const topOffset = rect.top - sidebarRect.top;
+
+      // Move the scroll stick to the hovered link
+      scrollStick.style.top = `${topOffset}px`;
+      scrollStick.style.height = `${rect.height}px`;
+    });
+
+    link.addEventListener('mouseleave', () => {
+      // Reset to the currently active link after hover
+      const activeLink = document.querySelector('.sidebar-link.active');
+      if (activeLink) {
+        const rect = activeLink.getBoundingClientRect();
+        const sidebarRect = activeLink.parentElement.getBoundingClientRect();
+        const topOffset = rect.top - sidebarRect.top;
+
+        scrollStick.style.top = `${topOffset}px`;
+        scrollStick.style.height = `${rect.height}px`;
+      }
+    });
+  });
+
+  // On page load, set the stick position to the active link
+  const activeLink = document.querySelector('.sidebar-link.active');
+  if (activeLink) {
+    const rect = activeLink.getBoundingClientRect();
+    const sidebarRect = activeLink.parentElement.getBoundingClientRect();
+    const topOffset = rect.top - sidebarRect.top;
+
+    scrollStick.style.top = `${topOffset}px`;
+    scrollStick.style.height = `${rect.height}px`;
+  }
+});
