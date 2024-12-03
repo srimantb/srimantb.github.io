@@ -1,25 +1,124 @@
-
-// ################## date and time ##################
+ // ################## date and time ##################
  // Function to get current date and time
  var span = document.getElementById('span');
+ function time() {
+   var d = new Date();
+   var s = d.getSeconds();
+   var m = d.getMinutes();
+   var h = d.getHours();
+   span.textContent = 
+     ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
+ }
+ setInterval(time, 1000);
+   // Call the updateDateTime function when the page loads 
+   window.onload = function() {
+     updateDateTime(); // Immediately show the current time on page load
+     setInterval(updateDateTime, 60000);  // Update every minute
+   };
+// ################## date and time End ##################
 
-function time() {
-  var d = new Date();
-  var s = d.getSeconds();
-  var m = d.getMinutes();
-  var h = d.getHours();
-  span.textContent = 
-    ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
-}
 
-setInterval(time, 1000);
+//###############################  news section small screen
+const newsSectionn = document.getElementById('newsSection');
+let startX = 0;
+let endX = 0;
 
-  // ################## Call the updateDateTime function when the page loads ##################
-  window.onload = function() {
-    updateDateTime(); // Immediately show the current time on page load
-    setInterval(updateDateTime, 60000);  // Update every minute
-  };
+// Detect swipe gesture
+document.body.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
 
+document.body.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].clientX;
+
+  // Swipe left to open the news section
+  if (startX - endX > 50) { // Swipe threshold
+    newsSectionn.classList.add('open');
+  }
+
+  // Swipe right to close the news section
+  if (endX - startX > 50) { // Swipe threshold
+    newsSectionn.classList.remove('open');
+  }
+});
+
+// Close the news section if clicked outside
+document.addEventListener('click', (e) => {
+  if (!newsSectionn.contains(e.target) && !e.target.closest('.search-bar')) {
+    newsSectionn.classList.remove('open');
+  }
+});
+
+//###############################  news section small screen end
+
+ 
+ // #####################  Toggle Sidebar for Mobile ##################
+ document.getElementById('menu-icon').addEventListener('click', function() {
+  this.classList.toggle('open');
+});  
+ function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('show');
+}// #####################  Toggle Sidebar for Mobile End  ##################
+
+
+// ##############################  sidebar stick
+// sidebar stick
+document.addEventListener('DOMContentLoaded', function () {
+  const links = document.querySelectorAll('.sidebar-link');
+  const scrollStick = document.querySelector('.scroll-stick');
+
+  links.forEach((link, index) => {
+    link.addEventListener('mouseenter', () => {
+      // Get the top position of the hovered link
+      const rect = link.getBoundingClientRect();
+      const sidebarRect = link.parentElement.getBoundingClientRect();
+      const topOffset = rect.top - sidebarRect.top;
+
+      // Move the scroll stick to the hovered link
+      scrollStick.style.top = `${topOffset}px`;
+      scrollStick.style.height = `${rect.height}px`;
+    });
+
+    link.addEventListener('mouseleave', () => {
+      // Reset to the currently active link after hover
+      const activeLink = document.querySelector('.sidebar-link.active');
+      if (activeLink) {
+        const rect = activeLink.getBoundingClientRect();
+        const sidebarRect = activeLink.parentElement.getBoundingClientRect();
+        const topOffset = rect.top - sidebarRect.top;
+
+        scrollStick.style.top = `${topOffset}px`;
+        scrollStick.style.height = `${rect.height}px`;
+      }
+    });
+  });
+
+  // On page load, set the stick position to the active link
+  const activeLink = document.querySelector('.sidebar-link.active');
+  if (activeLink) {
+    const rect = activeLink.getBoundingClientRect();
+    const sidebarRect = activeLink.parentElement.getBoundingClientRect();
+    const topOffset = rect.top - sidebarRect.top;
+
+    scrollStick.style.top = `${topOffset}px`;
+    scrollStick.style.height = `${rect.height}px`;
+  }
+});
+// ################################################# 
+
+// J####################  javaScript for News Toggle Button
+// JavaScript for News Toggle Button
+const toggleNewsBtn = document.getElementById("toggle-news-btn");
+const newsSection = document.querySelector(".news-section");
+
+toggleNewsBtn.addEventListener("click", () => {
+    newsSection.classList.toggle("hidden");
+    newsSection.classList.toggle("show");
+});
+
+
+// search result
 
 // Function to perform search and display results
 function searchArticles() {
@@ -66,83 +165,3 @@ document.addEventListener("click", (e) => {
 });
 
 
-// Toggle Sidebar for Mobile
-function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('show');
-  }
-
-  // news section
-
-  const newsSection = document.getElementById('newsSection');
-    let startX = 0;
-    let endX = 0;
-
-    // Detect swipe gesture
-    document.body.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-    });
-
-    document.body.addEventListener('touchend', (e) => {
-      endX = e.changedTouches[0].clientX;
-
-      // Swipe left to open the news section
-      if (startX - endX > 50) { // Swipe threshold
-        newsSection.classList.add('open');
-      }
-
-      // Swipe right to close the news section
-      if (endX - startX > 50) { // Swipe threshold
-        newsSection.classList.remove('open');
-      }
-    });
-
-    // Close the news section if clicked outside
-    document.addEventListener('click', (e) => {
-      if (!newsSection.contains(e.target) && !e.target.closest('.search-bar')) {
-        newsSection.classList.remove('open');
-      }
-    });
-
-// sidebar stick
-document.addEventListener('DOMContentLoaded', function () {
-  const links = document.querySelectorAll('.sidebar-link');
-  const scrollStick = document.querySelector('.scroll-stick');
-
-  links.forEach((link, index) => {
-    link.addEventListener('mouseenter', () => {
-      // Get the top position of the hovered link
-      const rect = link.getBoundingClientRect();
-      const sidebarRect = link.parentElement.getBoundingClientRect();
-      const topOffset = rect.top - sidebarRect.top;
-
-      // Move the scroll stick to the hovered link
-      scrollStick.style.top = `${topOffset}px`;
-      scrollStick.style.height = `${rect.height}px`;
-    });
-
-    link.addEventListener('mouseleave', () => {
-      // Reset to the currently active link after hover
-      const activeLink = document.querySelector('.sidebar-link.active');
-      if (activeLink) {
-        const rect = activeLink.getBoundingClientRect();
-        const sidebarRect = activeLink.parentElement.getBoundingClientRect();
-        const topOffset = rect.top - sidebarRect.top;
-
-        scrollStick.style.top = `${topOffset}px`;
-        scrollStick.style.height = `${rect.height}px`;
-      }
-    });
-  });
-
-  // On page load, set the stick position to the active link
-  const activeLink = document.querySelector('.sidebar-link.active');
-  if (activeLink) {
-    const rect = activeLink.getBoundingClientRect();
-    const sidebarRect = activeLink.parentElement.getBoundingClientRect();
-    const topOffset = rect.top - sidebarRect.top;
-
-    scrollStick.style.top = `${topOffset}px`;
-    scrollStick.style.height = `${rect.height}px`;
-  }
-});

@@ -3,21 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sri.in</title>
-  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <title>Your Website</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  
   <!-- Sidebar -->
   <div class="sidebar">
-    <div class="image-container">
-      <img src="1.png" alt="Your Image">
-    </div>
+    <img src="1.png" alt="Your Image">
     <h1>Srimant</h1>
-    
+
     <div class="scroll-stick"></div>
     <a class="sidebar-link active" href="index.html">Home</a>
     <a class="sidebar-link" href="about.html">About</a>
@@ -26,59 +22,58 @@
     <a class="sidebar-link" href="https://srimantb.github.io/notes">Notes</a>
     <a class="sidebar-link" href="#coffee">Buy Me a Coffee</a>
     <a class="sidebar-link" href="#upi">UPI ID</a>
-    
+
+     <!-- sidebar contact details -->
+      <div class="social-media">
+        <a href="https://github.com/srimantb" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/5rimant" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com/srimantk666" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:srimant.work@example.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <!-- <a href="https://www.linkedin.com/in/srii0/" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a> -->
+        <!-- <a href="https://www.reddit.com/r/hackerBBSR/" target="_blank">
+          <i class="fab fa-reddit"></i>
+        </a> -->
+      </div>
 
 
-    <!-- sidebar contact details -->
-    <div class="social-media">
-      <a href="https://github.com/srimantb" target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.instagram.com/5rimant" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://x.com/srimantk666" target="_blank">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="mailto:srimant.work@example.com">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/srii0/" target="_blank">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://www.reddit.com/r/hackerBBSR/" target="_blank">
-        <i class="fab fa-reddit"></i>
-      </a>
-  </div>
-  
-  
   </div>
   <div class="overlay"></div>
 
   <!-- Main Content -->
-  
+  <div>
     <!-- Navbar -->
-    
     <div class="navbar">
-      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+      <div class="menu-icon" id="menu-icon" onclick="toggleSidebar()" >
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+      
+      <!-- <button class="menu-toggle" onclick="toggleSidebar()">☰</button> -->
+      
       <span id="span"></span>
+      <button id="toggle-news-btn">News</button>
       <input class="searchbar" type="text" id="searchBar" placeholder="Search..." onkeyup="searchArticles()" onclick="searchArticles()">
     </div>
-
-
     <div class="search-results" id="searchResults" style="display: none;">
       <!-- Cards will be generated dynamically here -->
     </div>
+
     <!-- Content Area -->
     <div class="main">
-      <h2>Hey welcome</h2>
-   
-      <p>Welcome to my corner of the web! Here, <br>
-        I share what little knowledge I think I have about hacking & cybersecurity! <br>
-        Here, you'll find write-ups on CTFs, insights into CVEs, cybersecurity tools,<br>
-        and articles on hacking. <br> <br>
-        This is my space to document the knowledge I've gained.</p>
-      <p>I hope it helps others on their path to mastering cybersecurity.</p>
+      <h2>Welcome to Your Website</h2>
+      <p>Here you can write your content!</p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br>Voluptates repellat velit non accusamus illo laboriosam dicta hic rerum minus sint,br nesciunt voluptatem ipsa facilis delectus explicabo ut nam repudiandae a?</p>
 
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
         esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
@@ -101,44 +96,36 @@
          
 
       </p>
+
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt hic unde voluptates, 
+        esse voluptatum ea dolorum enim, officia quas repudiandae dolor obcaecati quod consequuntur reprehenderit quisquam,
+         beatae doloremque harum quibusdam!  <br>
+         
+
+      </p>
+
       
 
-      <div id="articles">
-        <div class="article" data-tags="linux hacking, security, pentesting">
-          <a href="#linux-hacking-article">Linux Hacking Basics</a>
-          <p>A beginner's guide to hacking in Linux.</p>
-        </div>
-        <div class="article" data-tags="linux, hacking, tools">
-          <a href="#linux-hacking-tools">Top Tools for Linux Hacking</a>
-          <p>List of essential tools for Linux hacking.</p>
-        </div>
-        <div class="article" data-tags="cybersecurity, hacking, linux">
-          <a href="#advanced-hacking-techniques">Advanced Linux Hacking Techniques</a>
-          <p>Learn advanced techniques for exploiting Linux systems.</p>
-        </div>
-        <div class="article" data-tags="cybersecurity, hacking, linux">
-          <a href="#advanced-hacking-techniques">Advanced Linux Hacking Techniques</a>
-          <p>Learn advanced techniques for exploiting Linux systems.</p>
-        </div>
-        <div class="article" data-tags="cybersecurity, windows, linux">
-          <a href="#advanced-hacking-techniques">Advanced windows Hacking Techniques</a>
-          <p>Learn advanced techniques for exploiting windows systems.</p>
-        </div>
-        <div class="article" data-tags="cybersecurity, windows, linux">
-          <a href="#advanced-hacking-techniques">Advanced windows Hacking Techniques</a>
-          <p>Learn advanced techniques for exploiting windows systems.</p>
-        </div>
-        <!-- More articles can be added here -->
-      </div>
     </div>
+  </div>
   
-    
-
-  
-    
-    
-    <!-- News Section -->
-  <div class="news-section" id="newsSection">
+   <!-- #################################  News Section -->
+   <div class="news-section" id="newsSection">
     <h2>The Cyber World</h2>
     <div class="news-card">
       <h3>News One</h3>
@@ -153,15 +140,36 @@
       <p>Top 10 tips to secure your personal data online...</p>
     </div>
   </div>
-  <!-- Swipe Indicator -->
   <div class="swipe-indicator"></div>
+   <!-- #################################  News Section End -->
 
-  
+   <div id="articles">
+    <div class="article" data-tags="linux hacking, security, pentesting">
+      <a href="#linux-hacking-article">Linux Hacking Basics</a>
+      <p>A beginner's guide to hacking in Linux.</p>
     </div>
+    <div class="article" data-tags="linux, hacking, tools">
+      <a href="#linux-hacking-tools">Top Tools for Linux Hacking</a>
+      <p>List of essential tools for Linux hacking.</p>
+    </div>
+    <div class="article" data-tags="cybersecurity, hacking, linux">
+      <a href="#advanced-hacking-techniques">Advanced Linux Hacking Techniques</a>
+      <p>Learn advanced techniques for exploiting Linux systems.</p>
+    </div>
+    <div class="article" data-tags="cybersecurity, hacking, linux">
+      <a href="#advanced-hacking-techniques">Advanced Linux Hacking Techniques</a>
+      <p>Learn advanced techniques for exploiting Linux systems.</p>
+    </div>
+    <div class="article" data-tags="cybersecurity, windows, linux">
+      <a href="#advanced-hacking-techniques">Advanced windows Hacking Techniques</a>
+      <p>Learn advanced techniques for exploiting windows systems.</p>
+    </div>
+    <div class="article" data-tags="cybersecurity, windows, linux">
+      <a href="#advanced-hacking-techniques">Advanced windows Hacking Techniques</a>
+      <p>Learn advanced techniques for exploiting windows systems.</p>
+    </div>
+
   </div>
-
-  
-
 
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
