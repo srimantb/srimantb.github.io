@@ -16,60 +16,86 @@
      setInterval(updateDateTime, 60000);  // Update every minute
    };
 // ################## date and time End ##################
+// ########################### NAme promp
+// Check if a name is already saved in localStorage
+    // JavaScript Function to Redirect to Home Page
+    function submitLogin() {
+      const username = document.getElementById('username').value.trim();
+      if (username) {
+          localStorage.setItem('userName', username); // Save name to localStorage
+          window.location.href = 'home.html'; // Redirect to home page
+      } else {
+          alert('Please enter your name!');
+      }
+  }
+  console.log(localStorage.getItem('userName'));
+  window.onload = function () {
+    const savedName = localStorage.getItem('userName');
+    if (savedName) {
+        document.getElementById('welcomeMessage').textContent = `Welcome, ${savedName}!`;
+    } else {
+        document.getElementById('welcomeMessage').textContent = `Welcome, SRI!`; // Default fallback
+    }
+};
+function logout() {
+  localStorage.removeItem('userName'); // Clear stored name
+  window.location.href = 'index.html'; // Redirect to login page
+}
+
 // //############################### Welcome section start
-const hours = new Date().getHours();
-const greeting =
-    hours < 12
-        ? "Good Morning, Hacker!"
-        : hours < 18
-        ? "Good Afternoon, Hacker!"
-        : "Good Evening, Hacker!";
-document.querySelector('.welcome-title').textContent = greeting;
+// const hours = new Date().getHours();
+// const greeting =
+//     hours < 12
+//         ? "Good Morning, Hacker!"
+//         : hours < 18
+//         ? "Good Afternoon, Hacker!"
+//         : "Good Evening, Hacker!";
+// document.querySelector('.welcome-title').textContent = greeting;
 
 // Array of quotes
 // Array of quotes
-const quotes = [
-  "The quieter you become, the more you are able to hear.",
-  "The only true wisdom is in knowing you know nothing. – Socrates",
-  "Hack the planet!",
-  "In the middle of difficulty lies opportunity. – Albert Einstein",
-  "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill"
-];
+// const quotes = [
+//   "The quieter you become, the more you are able to hear.",
+//   "The only true wisdom is in knowing you know nothing. – Socrates",
+//   "Hack the planet!",
+//   "In the middle of difficulty lies opportunity. – Albert Einstein",
+//   "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill"
+// ];
 
 // Function to insert <br> tags for long quotes
-function insertLineBreaks(text, maxLength = 50) {
+// function insertLineBreaks(text, maxLength = 50) {
   // Split the text into an array of words
-  let words = text.split(' ');
-  let line = '';
-  let result = [];
+  // let words = text.split(' ');
+  // let line = '';
+  // let result = [];
 
   // Loop through the words and group them into lines
-  words.forEach(word => {
-      if (line.length + word.length + 1 > maxLength) {
-          result.push(line);
-          line = word;
-      } else {
-          line += (line.length ? ' ' : '') + word;
-      }
-  });
+  // words.forEach(word => {
+  //     if (line.length + word.length + 1 > maxLength) {
+  //         result.push(line);
+  //         line = word;
+  //     } else {
+  //         line += (line.length ? ' ' : '') + word;
+  //     }
+  // });
   // Add any remaining text as the last line
-  if (line) {
-      result.push(line);
-  }
+  // if (line) {
+  //     result.push(line);
+  // }
 
   // Join the lines with <br> tags
-  return result.join('<br>');
-}
+  // return result.join('<br>');
+// }
 
 // Function to change the quote
-function changeQuote() {
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-  const formattedQuote = insertLineBreaks(randomQuote);
-  document.querySelector(".quote").innerHTML = formattedQuote;
-}
+// function changeQuote() {
+//   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+//   const formattedQuote = insertLineBreaks(randomQuote);
+//   document.querySelector(".quote").innerHTML = formattedQuote;
+// }
 
 // Change the quote on page load
-window.onload = changeQuote;
+// window.onload = changeQuote;
 
 
 // //############################### Welcome section end
