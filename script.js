@@ -19,6 +19,14 @@
 // ########################### NAme promp
 // Check if a name is already saved in localStorage
     // JavaScript Function to Redirect to Home Page
+    window.onload = function () {
+      const savedName = localStorage.getItem('userName');
+      if (savedName) {
+        console.log(savedName)
+        window.location.href = 'home.html';
+      } else {
+        window.location.href = 'home.html';// Default fallback
+      }}
     function submitLogin() {
       const username = document.getElementById('username').value.trim();
       if (username) {
@@ -34,7 +42,7 @@
     if (savedName) {
         document.getElementById('welcomeMessage').textContent = `Welcome, ${savedName}!`;
     } else {
-        document.getElementById('welcomeMessage').textContent = `Welcome, SRI!`; // Default fallback
+        document.getElementById('welcomeMessage').textContent = `Hey Welcome!`; // Default fallback
     }
 };
 function logout() {

@@ -64,7 +64,16 @@
     
 </head>
 <body>
-    
+    <script>
+     window.onload = function () {
+    const savedName = localStorage.getItem('userName');
+    if (savedName) {
+      console.log(savedName)
+      window.location.href = 'home.html';
+    } else {
+      window.location.href = 'home.html';// Default fallback
+    }}
+    </script>
     <canvas id="background"></canvas>
     <div id="nameForm">
         <h1>Enter Your Name</h1>
