@@ -10,12 +10,12 @@ overflow-x: hidden; /* Disable horizontal scrolling */
 }
 
 /*  links */
-a {
+.social-media {
   text-decoration: none;
   color: #00ff00;
   transition: color 0.3s ease-in-out;
 }
-a:hover {
+.social-media:hover {
   color: #ffffff;
 }
 /* ####################################### Image animation Logo */
@@ -294,6 +294,13 @@ text-decoration: none;
   text-align: center;
   margin-bottom: 20px;
 }
+.news-section h3 {
+  color: #2fb66e;
+}
+.news-section p {
+  color: #ffffff;
+}
+
 
 .news-cards {
   display: flex;
@@ -321,7 +328,7 @@ text-decoration: none;
 
     color: #c5c4c4;
     /* color: #fff; */
-    width: 75%;
+    width: 85%;
     margin-top: 50px;
     margin-left: 250px;
     padding: 20px;
@@ -345,7 +352,69 @@ text-decoration: none;
 .main h2{
   color: #39c939;
 }
+/* ######################################### Recent POsts */
+.recent-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+}
 
+/* Card styles */
+.post-card {
+  width: 75%;
+  display: flex;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image styles */
+.post-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Content styles */
+.post-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #f0f0f0;
+}
+
+.post-title {
+  margin: 0;
+  font-size: 18px;
+  color: #2fb66e;
+}
+
+.post-description {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.post-date {
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.post-date i {
+  color: #2fb66e;
+}
 /* ############################ Main Content End */
 .article {
   display: none; /* Hide articles initially */
@@ -381,6 +450,94 @@ text-decoration: none;
 
 /* ################################# Responsive Design */
 
+/* For small screens (mobile devices) */
+@media (max-width: 600px) {
+  .post-card {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .post-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .post-content {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .post-title {
+   
+    font-size: 16px;
+  }
+
+  .post-description {
+    font-size: 12px;
+  }
+
+  .post-date {
+    font-size: 10px;
+  }
+}
+
+/* For medium screens (tablets and small laptops) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .recent-posts {
+    flex-direction: column;
+  }
+
+  .post-card {
+    flex-direction: row;
+  }
+
+  .post-image {
+    width: 90px;
+    height: 90px;
+  }
+
+  .post-content {
+    gap: 10px;
+  }
+
+  .post-title {
+    font-size: 17px;
+  }
+
+  .post-description {
+    font-size: 13px;
+  }
+}
+
+/* For large screens (desktop) */
+@media (min-width: 1025px) {
+  .recent-posts {
+    flex-direction: column;
+  }
+
+  .post-card {
+    flex-direction: row;
+  }
+
+  .post-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .post-content {
+    gap: 10px;
+  }
+
+  .post-title {
+    font-size: 18px;
+  }
+
+  .post-description {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .social-media {
     bottom: 5%; /* Adjust spacing from the bottom */
@@ -409,7 +566,7 @@ text-decoration: none;
   }
 
   .news-section h2 {
-    color: #00ff00;
+    color: #ffffff;
   }
 
   .news-card {
@@ -476,7 +633,7 @@ text-decoration: none;
 }
 
 .news-section h2 {
-  color: #00ff00;
+  color: #ffffff;
 }
 
 .news-card {
