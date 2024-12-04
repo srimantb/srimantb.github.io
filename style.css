@@ -32,26 +32,42 @@ overflow-x: hidden; /* Disable horizontal scrolling */
 /* Welcome messagae desing start */
 /* Base styling for Welcome Section */
 .welcome-section {
-  width: 65%;
-  background: linear-gradient(135deg, #1d1d1d, #101010);
-  color: #2fb66e;
-  text-align: center;
-  padding: 50px 20px;
-  position: relative;
-  box-shadow: inset 0 0 10px #000;
-  font-family: 'Courier New', monospace;
+  width: 63%;
+  background: linear-gradient(to right, #1f1f1f, #333333); /* Smooth gradient for modern look */
+  padding: 40px; /* Add padding for better content spacing */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle box shadow for floating effect */
+  text-align: center; 
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
 .welcome-title {
   
-  font-size: 3vw; /* Responsive font size */
-  letter-spacing: 1px;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid #2fb66e;
-  animation: typing 3s steps(30, end), blink 0.7s step-end infinite alternate;
+  color: #ffffff; /* White text color for the title */
+  font-size: 3rem; /* Larger font size */
+  margin-bottom: 20px; /* Space between title and other text */
+  font-family: 'Roboto', sans-serif; /* Clean, modern font */
+  font-weight: bold;
 }
-
+.welcome-section p {
+  color: #e4e4e4; /* Light grey color for paragraphs */
+  font-size: 1.2rem; /* Slightly bigger text for readability */
+  line-height: 1.6;
+  margin: 20px 0;
+  font-family: 'Roboto', sans-serif; /* Ensure all text uses the same font */
+}
+.welcome-section p.quote {
+  font-style: italic;
+  font-size: 1.4rem;
+  color: #f4f4f4;
+  padding: 10px 20px;
+  background-color: #444444; /* Slightly darker background for the quote */
+  border-radius: 8px;
+}
+.welcome-section:hover {
+  transform: translateY(-5px); /* Slight floating effect on hover */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
 /* Keyframe animations for the typing effect */
 @keyframes typing {
   from {
