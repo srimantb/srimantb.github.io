@@ -296,7 +296,7 @@ text-decoration: none;
 /* ########################################## Main container start */
 /* Main Content */
 .main{
-width: 67%;
+width: calc(100% - 400px);
 margin-top: 3%;
 margin-left: 250px;
 padding: 20px;
@@ -900,6 +900,10 @@ display: block;
     font-size: 13px;
     position: relative;
     transition: color 0.3s ease-in-out;
+    }
+
+    .main {
+      width: 60%;
     }
 
 }

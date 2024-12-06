@@ -219,15 +219,20 @@ const newsSection = document.querySelector(".news-section");
 const mainContent = document.querySelector(".main");
 
 toggleNewsBtn.addEventListener("click", () => {
-    newsSection.classList.toggle("hidden");
-    newsSection.classList.toggle("show");
-    // Check if the news section is now visible
-    if (newsSection.classList.contains("show")) {
-      // News section is visible, set main content width to 67%
-      mainContent.style.width = "auto";
+  newsSection.classList.toggle("hidden");
+  newsSection.classList.toggle("show");
+
+  // Check if the news section is now visible
+  if (newsSection.classList.contains("show")) {
+    // News section is visible, set main content width to auto
+    mainContent.style.width = "auto";
   } else {
-      // News section is hidden, set main content width to auto
-      mainContent.style.width = "67%";
+    // News section is hidden, set main content width based on screen size
+    if (window.innerWidth >= 1025) {
+      mainContent.style.width = "60%"; // For larger screens
+    } else {
+      mainContent.style.width = "67%"; // For smaller screens
+    }
   }
 });
 
@@ -277,5 +282,6 @@ document.addEventListener("click", (e) => {
     searchResults.style.display = "none";
   }
 });
+
 
 
