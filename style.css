@@ -1,110 +1,190 @@
+/* ###################################################################  General Design Start ############################################################# */
+* {
+  margin-top: 0;
+  padding-top: 0;
+  box-sizing: border-box;
+}
+
+
 body {
-  flex-wrap: wrap;
-  margin: 0;
+
   font-family: "Courier New", monospace;
   color: #00ff00;
   background-color: #1e1e1e;
-  display: flex;
-}
-body, html {
-overflow-x: hidden; 
-}
-* {
-  border: none;
-  outline: none;
-  box-shadow: none;
-}
-/* Remove green borders or outlines */
-.element-causing-line {
-  border: none;
-  outline: none;
-  box-shadow: none;
-}
+  min-height: 100%;
 
-/*  links */
-.social-media {
-  text-decoration: none;
-  color: #00ff00;
-  transition: color 0.3s ease-in-out;
-}
-.social-media:hover {
-  color: #ffffff;
-}
 
-/* Welcome messagae desing start */
-/* Base styling for Welcome Section */
-.welcome-section {
-  width: 67%;
-  background: linear-gradient(to right, #1f1f1f, #333333); 
-  padding: 40px; 
-  border-radius: 15px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-  text-align: center; 
-  transition: all 0.3s ease-in-out; 
-}
-
-.welcome-title {
-  
-  color: #ffffff; 
-  font-size: 3rem; 
-  margin-bottom: 20px; 
-  font-family: 'Roboto', sans-serif; 
-  font-weight: bold;
-}
-.welcome-section p {
-  color: #e4e4e4;
-  font-size: 1.2rem; 
+  font-family: Arial, sans-serif;
   line-height: 1.6;
-  margin: 20px 0;
-  font-family: 'Roboto', sans-serif; 
-}
-.welcome-section p.quote {
-  font-style: italic;
-  font-size: 1.4rem;
-  color: #f4f4f4;
-  padding: 10px 20px;
-  background-color: #444444; 
-  border-radius: 8px;
-}
-.welcome-section:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); 
-}
-/* Keyframe animations for the typing effect */
-@keyframes typing {
-  from {
-      width: 0;
-  }
-  to {
-      width: 70%;
-  }
 }
 
-@keyframes blink {
-  from {
-      border-right-color: #2fb66e;
-  }
-  to {
-      border-right-color: transparent;
-  }
+/* Layout Containers */
+.container { 
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+/* buttons */
+
+/* button end */
+
+/* ##########################################  Top Navbar start */
+.navbar{
+width: calc(100% - 250px);
+display: flex;
+background-color: #333333;
+justify-content: space-between;
+position: fixed;
+align-items: center;
+padding: 10px 20px;
+box-sizing: border-box;
+top: 0;
+left: 250px;
+z-index: 1000;
+
+}
+.navbar .menu{
+display: flex;
+gap: 15px;
+}
+.navbar input[type="text"] {
+background-color: #444444;
+color: #00ff00;
+border: none;
+padding: 5px 10px;
+border-radius: 5px;
+outline: none;
+}
+.searchbar{
+width: auto;
+}
+/* news toogle button */
+#toggle-news-btn {
+margin-left: 60%;
+padding: 8px 10px;
+background-color: #444444;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+.logout{
+padding: 8px 10px;
+background-color: #444444;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+/* ##########################################  Top Navbar End */
+/* ##########################################  Sidebar start */
+/* Left Sidebar */
+.sidebar{
+width: 250px;
+background-color: #2b2b2b;
+height: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-top: 20px;
+position: fixed;
+left: 0;
+top: 0;
+z-index: 1000;
+transition: transform 0.3s ease-in-out;
+
+}
+.sidebar img {
+margin-top: 15%;
+width: 100px;
+height: 100px;
+border-radius: 50%;
+margin-bottom: 10px;
+animation: fadeIn 1s ease-in-out;
+}
+.sidebar h1 {
+color: white;
+margin-top: 5%;
+/* margin: 0; */
+font-size: 20px;
+margin-bottom: 20px;
+text-align: center;
+animation: slideIn 0.5s ease-in-out;
+}
+.sidebar a {
+margin: 10px 0;
+}
+.sidebar a:hover {
+text-decoration: underline;
+}
+.social-media {
+position: absolute; 
+bottom: 10%;
+left: 25%; 
+/* Center horizontally */
+display: flex;
+flex-wrap: wrap; 
+gap: 10px; 
+justify-content: center;
+}
+.social-media a {
+font-size: 20px; 
 }
 
-/* Divider */
-.divider {
-  width: 60%;
-  height: 2px;
-  background: linear-gradient(to right, #2fb66e, transparent);
-  margin: 20px auto;
+/* stick  */
+.sidebar-link {
+max-height: 100vh; /* Prevent overflow beyond viewport height */
+display: block;
+padding: 5px 10px;
+margin-bottom: 10px;
+color: #c4c4c4;
+text-decoration: none;
+font-size: 15px;
+position: relative;
+transition: color 0.3s ease-in-out;
 }
 
-/* Welcome messagae desing start */
+.sidebar-link:hover {
+color: #39c939;
+}
+
+/* Scroll stick styling */
+.scroll-stick {
+position: absolute;
+width: 3px; 
+height: 10px; 
+background-color: white;
+left: 0; 
+top: 10px; 
+transition: top 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+/* Active link styling */
+.sidebar-link.active {
+color: #39c939;
+}
+
+.sidebar-link.active::before {
+content: '';
+position: absolute;
+height: 3px;
+width: 100%;
+bottom: 0;
+left: 0;
+background-color: #39c939;
+}
+
+/* ##########################################  Sidebar End */
+
 /* ####################################### Image animation Logo */
 .image-container {
-margin-top: 15%;
+margin-top: 5%;
 margin-bottom: 10%;
-margin-left: 15%;
+margin-left: 1%;
 position: relative;
-width: 150px;
+width: 160px;
 height: 150px;
 transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -127,231 +207,667 @@ box-shadow: 0 15px 30px rgba(0, 255, 0, 0.4); /
 transform: scale(2.2); 
 box-shadow: 0 10px 20px rgba(0, 255, 0, 0.4);
 }
+/* ####################################### Image animation Logo End */
 
-/* ##################################### Left Sidebar */
-.sidebar {
-    /* background-image: url('sidebar2.jpg'); */
-    width: 250px;
-    background-color: #2b2b2b;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out;
+
+/* ##########################################  right side news section Start */
+.news-section {
+margin-top: 2%;
+width: 400px;
+background-color: #282828;
+color: #e5eee5;
+padding: 20px;
+overflow-y: auto;
+position: fixed;
+right: 0;
+top: 0;
+height: 100%;
+box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+transition: transform 0.3s ease-in-out;
 }
-.sidebar img {
-  margin-top: 15%;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  animation: fadeIn 1s ease-in-out;
+.swipe-indicator { 
+display: block;
+position: absolute;
+top: 50%;
+left: -20px;
+width: 20px;
+height: 50px;
+background-color: #888;
+border-radius: 10px;
+transform: translateY(-50%);
 }
-.sidebar h1 {
-  color: white;
-  margin-top: 10%;
-  /* margin: 0; */
-  font-size: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-  animation: slideIn 0.5s ease-in-out;
+.news-section.open {
+right: 0; /* Fully visible when open */
 }
-.sidebar a {
-  margin: 10px 0;
+
+.news-section.hidden {
+transform: translateX(100%);
 }
-.sidebar a:hover {
-text-decoration: underline;
+
+.news-section {
+transform: translateX(0);
+transition: transform 0.3s ease-in-out;
 }
-.social-media {
-position: absolute; 
-bottom: 10%;
-left: 25%; 
- /* Center horizontally */
+
+.news-section h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+.news-section h3 {
+color: #2fb66e;
+}
+.news-section p {
+color: #ffffff;
+}
+
+
+.news-cards {
 display: flex;
-flex-wrap: wrap; 
-gap: 10px; 
-justify-content: center;
-}
-.social-media a {
-font-size: 20px; 
-}
-/* stick  */
-.sidebar-link {
-  display: block;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  color: #c4c4c4;
-  text-decoration: none;
-  font-size: 15px;
-  position: relative;
-  transition: color 0.3s ease-in-out;
+flex-direction: column;
+gap: 10px;
 }
 
-.sidebar-link:hover {
-  color: #39c939;
+.news-card {
+background-color: #333;
+margin-bottom: 15px;
+padding: 15px;
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Scroll stick styling */
-.scroll-stick {
-  position: absolute;
-  width: 3px; 
-  height: 10px; 
-  background-color: white;
-  left: 0; 
-  top: 10px; 
-  transition: top 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+.news-card:hover {
+transform: scale(1.05);
+/* background-color: #244624; */
+color: #fff;
+}
+.article {
+display: none; 
 }
 
-/* Active link styling */
-.sidebar-link.active {
-  color: #39c939;
+.article a {
+color: #39c939;
+text-decoration: none;
 }
 
-.sidebar-link.active::before {
-  content: '';
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  background-color: #39c939;
+
+/* ##########################################  right side news section End */
+
+/* ########################################## Main container start */
+/* Main Content */
+.main{
+width: 67%;
+margin-top: 3%;
+margin-left: 250px;
+padding: 20px;
+}
+/* ####################   Welcome messagae desing start */
+/* Base styling for Welcome Section */
+.welcome-section {
+width: auto;
+background: linear-gradient(to right, #1f1f1f, #333333); 
+padding: 40px; 
+border-radius: 15px; 
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+text-align: center; 
+transition: all 0.3s ease-in-out; 
 }
 
-/* ##################################### Left Sidebar End */
+.welcome-title {
 
-/* Top Navbar */
-.navbar {
-  width: calc(100% - 250px);
-  height: 50px;
-  background-color: #333333;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 250px;
-  z-index: 1000;
+color: #ffffff; 
+font-size: 3rem; 
+margin-bottom: 20px; 
+font-family: 'Roboto', sans-serif; 
+font-weight: bold;
 }
-.navbar .breadcrumbs {
-  font-size: 18px;
+.welcome-section p {
+color: #e4e4e4;
+font-size: 1.2rem; 
+line-height: 1.6;
+margin: 20px 0;
+font-family: 'Roboto', sans-serif; 
 }
-.navbar input[type="text"] {
-  background-color: #444444;
-  color: #00ff00;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  outline: none;
+.welcome-section p.quote {
+font-style: italic;
+font-size: 1.4rem;
+color: #f4f4f4;
+padding: 10px 20px;
+background-color: #444444; 
+border-radius: 8px;
 }
-.searchbar{
-  width: auto;
+.welcome-section:hover {
+transform: translateY(-5px); 
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); 
 }
+/* Divider */
+.divider {
+width: 60%;
+height: 2px;
+background: linear-gradient(to right, #2fb66e, transparent);
+margin: 20px auto;
+}
+/* Keyframe animations for the typing effect */
+@keyframes typing {
+from {
+    width: 0;
+}
+to {
+    width: 70%;
+}
+}
+
+@keyframes blink {
+from {
+    border-right-color: #2fb66e;
+}
+to {
+    border-right-color: transparent;
+}
+}
+/* Welcome messagae desing End */
+/* ######################################### Recent POsts */
+.recent-posts {
+display: grid;
+grid-template-columns: repeat(2, 1fr); 
+gap: 20px; 
+row-gap: 10px; 
+
+padding: 10px;
+}
+
+/* Card styles */
+.post-card {
+margin-left: 10%;
+margin-right: 15%;
+width: auto;
+display: flex;
+background-color: #2a2a2a;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+transition: transform 0.2s;
+}
+
+.post-card:hover {
+transform: translateY(-5px);
+}
+.grid-container {
+display: grid;
+column-gap: 50px;
+}
+/* Image styles */
+.post-image {
+width: 100px;
+height: 100px;
+object-fit: cover;
+}
+
+/* Content styles */
+.post-content {
+padding: 15px;
+display: flex;
+flex-direction: column;
+gap: 5px;
+color: #f0f0f0;
+}
+
+.post-title {
+margin: 0;
+font-size: 18px;
+color: #2fb66e;
+}
+
+.post-description {
+font-size: 14px;
+color: #ccc;
+}
+
+.post-date {
+font-size: 12px;
+color: #888;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+.post-date i {
+color: #2fb66e;
+}
+/* ############################ Main Content End */
+/* ########################################## Main container End */
 /* search result */
-#searchBar {
-  
-  width: 20%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  color: #39c939;
-  background-color: #444444;
-  }
-/* search */
-
 .search-results {
-  position: fixed;
-  top: 7.9%;
-  left: 19%;
-  width: 53.9%;
-  height: 90%;
-  background-color: rgba(0, 0, 0, 0.9); 
-  padding: 20px;
-  overflow-y: auto;
-  z-index: 999; 
-  display: none; 
-  flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px; 
+position: fixed;
+top: 7.9%;
+left: 19%;
+width: 53.9%;
+height: 90%;
+background-color: rgba(0, 0, 0, 0.9); 
+padding: 20px;
+overflow-y: auto;
+z-index: 999; 
+display: none; 
+flex-wrap: wrap;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+gap: 15px; 
 }
 
 .search-results .card {
-  gap: 20px;
-  margin-top: 20px;
-  width: 30%;
-  background-color: #282828;
-  color: #e5eee5;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+gap: 20px;
+margin-top: 20px;
+width: auto;
+background-color: #282828;
+color: #e5eee5;
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .container {
-  position: relative;
-  z-index: 2; /* Place above the canvas */
+position: relative;
+z-index: 2; /* Place above the canvas */
 }
 canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; /* Ensure it covers the viewport */
-  z-index: 0; /* Keep it below other elements */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%; /* Ensure it covers the viewport */
+z-index: 0; /* Keep it below other elements */
 }
 .search-results .card:hover {
-  transform: scale(1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+transform: scale(1);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .search-results h3 {
-  margin-bottom: 10px;
-  color: #39c939;
+margin-bottom: 10px;
+color: #39c939;
 }
 
 .search-results p {
-  margin: 0;
-  color: #c4c4c4;
+margin: 0;
+color: #c4c4c4;
 }
 
 a {
-  text-decoration: none;
-  color: #39c939;
-  transition: color 0.3s ease-in-out;
+text-decoration: none;
+color: #39c939;
+transition: color 0.3s ease-in-out;
 }
 a:hover {
-  color: #ffffff;
+color: #ffffff;
 }
 
 .search-results a:hover {
-  background-color: #555;
-  }
+background-color: #555;
+}
 
 .article {
-  display: none; 
-  }
+display: none; 
+}
 
 .article a {
 color: #39c939;
 text-decoration: none;
 }
 .menu-toggle{
-  visibility: hidden;
+visibility: hidden;
 }
 
 /* search result end */
+/* ###################################################################  General Design End ############################################################# */
+/* ############################## Animation */
+/* Animations */
+@keyframes fadeIn {
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}
+}
 
-/* ###########################   News Section */
-/* news toogle button */
+@keyframes slideIn {
+from {
+  transform: translateX(-50px);
+  opacity: 0;
+}
+to {
+  transform: translateX(0);
+  opacity: 1;
+}
+}
+/* ############################## Animation ENd */
+
+/* ################################################################### Responsive Design Satrt ############################################################# */
+
+
+/* ####################### smaller smartphones or narrow viewport screens ###########################*/
+@media screen and (max-width: 480px){
+.sidebar-link {
+  font-size: 12px; /* Further reduce font size for very small screens */
+  padding: 5px 10px;
+}
+
+.news-section {
+  margin-top: 7%;
+}
+.searchbar{
+  width: 30%;
+}
+
+.news-section {
+  right: -100%; 
+  width: 80%; /* Wider for small screens */
+}
+
+.swipe-indicator { 
+display: block;
+}
+
+.main {
+  width: 100%;
+  margin-left: 0;
+}
+.navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+}
+.sidebar {
+  transform: translateX(-100%);
+  position: fixed;
+  width: 200px;
+}
+.sidebar.show {
+  transform: translateX(0); 
+}
+.sidebar {
+  position: fixed;
+  transform: translateX(-100%);
+}
+
+/* meun css */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+.menu-icon span {
+  display: block;
+  height: 3px;
+  background-color: #2fb66e;
+  transition: 0.3s;
+  
+}
+.nav-links.show {
+  max-height: 200px; 
+}
+
+.menu-icon {
+  display: flex;
+}
+
+.menu-icon span:nth-child(2) {
+  
+  opacity: 1;
+}
+
+.menu-icon.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+}
+  
+  
+
+/* ####################### Commonly used for very small screens, such as mobile phones ###########################*/
+@media (max-width: 600px){
+.sidebar-link {
+  font-size: 14px; /* Slightly smaller font size */
+  padding: 8px 12px; /* Reduce padding to save space */
+}
+.news-section {
+  margin-top: 7%;
+}
+.welcome-section{
+  width: 110%;
+  margin-top: 10%;
+}
+.main {
+  margin-top: 3%;
+  width: 95%;
+  margin-left: 0;
+}
+
+.recent-posts {
+  /* width: 100%; */
+  margin-left: -5%;
+  margin-right: -20%; 
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Two posts per row */
+  gap: 20px; /* Space between posts */
+  padding: 10px;
+}
+.news-section {
+  right: -100%; 
+  width: 80%; /* Wider for small screens */
+}
 #toggle-news-btn {
-  margin-left: 60%;
+display: none;
+}
+.swipe-indicator { 
+display: block;
+}
+.main {
+  width: auto;
+}
+.navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+}
+.sidebar {
+  transform: translateX(-100%);
+  position: fixed;
+  width: 200px;
+}
+.sidebar.show {
+  transform: translateX(0); 
+}
+.sidebar {
+  position: fixed;
+  transform: translateX(-100%);
+}
+
+/* meun css */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+.menu-icon span {
+  display: block;
+  height: 3px;
+  background-color: #2fb66e;
+  transition: 0.3s;
+  
+}
+.nav-links.show {
+  max-height: 200px; 
+}
+
+.menu-icon {
+  display: flex;
+}
+
+.menu-icon span:nth-child(2) {
+  
+  opacity: 1;
+}
+
+.menu-icon.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+  
+
+}
+/* ####################### This can overlap with phones and some tablets in portrait mode. ###########################*/
+@media screen and (max-width: 700px){
+.search-results{
+  position: fixed;
+  top: 7.9%;
+  left: 10%;
+  width: 80%;
+  height: 90%;
+
+}
+.news-section {
+  margin-top: 9%;
+}
+.recent-posts {
+  /* width: 100%; */
+  margin-left: -5%;
+  margin-right: -20%; 
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Two posts per row */
+  gap: 20px; /* Space between posts */
+  padding: 10px;
+}
+.welcome-section{
+  width: 110%;
+  margin-top: 10%;
+}
+.main {
+  margin-top: 3%;
+  width: 95%;
+  margin-left: 0;
+}
+.recent-posts {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Two posts per row */
+  gap: 20px; /* Space between posts */
+  padding: 10px;
+}
+.news-section {
+  right: -100%; 
+  width: 80%; /* Wider for small screens */
+}
+#toggle-news-btn {
+display: none;
+}
+.swipe-indicator { 
+display: block;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+}
+.sidebar {
+  transform: translateX(-100%);
+  position: fixed;
+  width: 200px;
+}
+.sidebar.show {
+  transform: translateX(0); 
+}
+.sidebar {
+  position: fixed;
+  transform: translateX(-100%);
+}
+
+/* meun css */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+.menu-icon span {
+  display: block;
+  height: 3px;
+  background-color: #2fb66e;
+  transition: 0.3s;
+  
+}
+.nav-links.show {
+  max-height: 200px; 
+}
+
+.menu-icon {
+  display: flex;
+}
+
+.menu-icon span:nth-child(2) {
+  
+  opacity: 1;
+}
+
+.menu-icon.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+}
+  
+    
+/* ####################### Commonly used for tablets and some smaller desktop screens ###########################*/
+@media (min-width: 601px) and (max-width: 1024px){
+  
+.search-results{
+  position: fixed;
+  top: 7.9%;
+  left: 35%;
+  width: 60%;
+  height: 90%;
+
+}
+.news-section {
+  margin-top: 5%;
+}
+.recent-posts {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Two posts per row */
+  gap: 20px; /* Space between posts */
+  padding: 10px;
+}
+#toggle-news-btn {
+  margin-left: 10%;
   padding: 8px 10px;
   background-color: #444444;
   color: #fff;
@@ -367,522 +883,23 @@ text-decoration: none;
   border-radius: 5px;
   cursor: pointer;
 }
-.news-section {
-  margin-top: 2%;
-  width: 300px;
-  background-color: #282828;
-  color: #e5eee5;
-  padding: 20px;
-  overflow-y: auto;
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 100%;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease-in-out;
+.welcome-section{
+  /* width: 110%; */
+  margin-top: 20%;
 }
-
-.news-section.hidden {
-  transform: translateX(100%);
 }
-
-.news-section {
-  transform: translateX(0);
-  transition: transform 0.3s ease-in-out;
-}
-
-.news-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.news-section h3 {
-  color: #2fb66e;
-}
-.news-section p {
-  color: #ffffff;
-}
-
-
-.news-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.news-card {
-  background-color: #333;
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.news-card:hover {
-  transform: scale(1.05);
-  /* background-color: #244624; */
-  color: #fff;
-}
-
-/* ############################ Main Content */
-.main {
-
-    color: #c5c4c4;
-    /* color: #fff; */
-    width: 150%;
-    margin-top: 50px;
-    margin-left: 250px;
-    padding: 20px;
-    height: calc(100vh - 50px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #00ff00 #444444;
-}
-
-.main::-webkit-scrollbar {
-  width: 6px;
-}
-.main::-webkit-scrollbar-thumb {
-  background-color: #00ff00;
-  border-radius: 5px;
-}
-
-.main::-webkit-scrollbar-track {
-  background-color: #444444;
-}
-.main h2{
-  color: #39c939;
-}
-/* ######################################### Recent POsts */
-.recent-posts {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  background-color: #1e1e1e;
-  border-radius: 8px;
-}
-
-/* Card styles */
-.post-card {
-  width: 73.7%;
-  display: flex;
-  background-color: #2a2a2a;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s;
-}
-
-.post-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Image styles */
-.post-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-
-/* Content styles */
-.post-content {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  color: #f0f0f0;
-}
-
-.post-title {
-  margin: 0;
-  font-size: 18px;
-  color: #2fb66e;
-}
-
-.post-description {
-  font-size: 14px;
-  color: #ccc;
-}
-
-.post-date {
-  font-size: 12px;
-  color: #888;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.post-date i {
-  color: #2fb66e;
-}
-/* ############################ Main Content End */
-.article {
-  display: none; 
-  }
-
-.article a {
-color: #39c939;
-text-decoration: none;
-}
-/* ############################## Animation */
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-/* ############################## Animation ENd */
-
-
-/* ################################# Responsive Design */
-
-/* For small screens (mobile devices) */
-@media (max-width: 600px) {
- 
-  /* welcome section */
-  .welcome-section {
-    width: 92%;
-    padding: 30px 10px;
-}
-
-.welcome-title {
-  
-    font-size: 6vw; /* Smaller font size on mobile */
-    margin: 0;
-}
-
-.divider {
-    width: 80%; 
-}
-
-/* Optional: Adjust content size to prevent overcrowding */
-.welcome-section p {
-    font-size: 1.2rem;
-}
-
-/* end welcome */
-  .post-card {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .post-image {
-    width: 80px;
-    height: 80px;
-  }
-
-  .post-content {
-    text-align: center;
-    padding: 10px;
-  }
-
-  .post-title {
-   
-    font-size: 16px;
-  }
-
-  .post-description {
-    font-size: 12px;
-  }
-
-  .post-date {
-    font-size: 10px;
-  }
-}
-
-/* For medium screens (tablets and small laptops) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .recent-posts {
-    flex-direction: column;
-  }
-
-  .post-card {
-    flex-direction: row;
-  }
-
-  .post-image {
-    width: 90px;
-    height: 90px;
-  }
-
-  .post-content {
-    gap: 10px;
-  }
-
-  .post-title {
-    font-size: 17px;
-  }
-
-  .post-description {
+/* #######################  Typically used for larger desktops and laptops. ###########################*/
+@media (min-width: 1025px){
+  .sidebar-link {
+    max-height: 100vh; /* Prevent overflow beyond viewport height */
+    display: block;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    color: #c4c4c4;
+    text-decoration: none;
     font-size: 13px;
-  }
-}
-
-/* For large screens (desktop) */
-@media (min-width: 1025px) {
-  .recent-posts {
-    flex-direction: column;
-  }
-
-  .post-card {
-    flex-direction: row;
-  }
-
-  .post-image {
-    width: 100px;
-    height: 100px;
-  }
-
-  .post-content {
-    gap: 10px;
-  }
-
-  .post-title {
-    font-size: 18px;
-  }
-
-  .post-description {
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .social-media {
-    bottom: 5%; 
-    gap: 8px;
-}
-
-
-  
-  /* work for news section */
-  .news-section {
-    position: fixed;
-    top: 60px; 
-    right: -100%; 
-    width: 75%;
-    height: 100%;
-   
-    background-color: #282828;
-    padding: 20px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    overflow-y: auto;
-    transition: transform 0.3s ease;
-  }
-
-  .news-section.open {
-    transform: translateX(-100%);
-  }
-
-  .news-section h2 {
-    color: #ffffff;
-  }
-
-  .news-card {
-    background-color: #333;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .news-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
-  }
-
-  .swipe-indicator { 
-      display: block;
+    position: relative;
+    transition: color 0.3s ease-in-out;
     }
-    .searchbar{
-      margin-right: 10%;
-      width: 10%;
-  }
-  
-  .sidebar {
-    transform: translateX(-100%);
-    position: fixed;
-    width: 200px;
-  }
-  .sidebar.show {
-    transform: translateX(0); 
-}
-  .navbar {
-    position: fixed;
-    width: calc(100% - 200px);
-    left: 200px;
-  }
-  .main {
-    width: 50%;
-    /* margin-left: 200px; */
-    margin-left: 0; 
-  }
-}
 
-
-@media screen and (max-width: 480px) {
- /* work for news section */
- .news-section {
-  position: fixed;
-  top: 40px; 
-  margin-right: 20%;
-  width: 70%;
-  height: 100%;
- 
-  background-color: #282828;
-  padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
-  transition: transform 0.3s ease;
-}
-
-.news-section.open {
-  transform: translateX(-100%);
-}
-
-.news-section h2 {
-  color: #ffffff;
-}
-
-.news-card {
-  background-color: #333;
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.news-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
-}
-
-
- .swipe-indicator { 
-  display: block;
-}
-  .sidebar {
-    position: fixed;
-    transform: translateX(-100%);
-  }
-  .sidebar img{
-      margin-top: 40%;
-  }
-  .sidebar.show {
-    transform: translateX(0);
-  }
-
-  .navbar {
-    position: fixed;
-    width: 100%;
-    left: 0;
-  }
-  #span{
-      margin-left: 5%;
-     
-  }
-
-  .main {
-    padding: 10px; 
-    width: 96%;
-    margin-left: 0;
-    /* width: 100%; */
-  }
-/* news close button */
-  #toggle-news-btn {
-      margin-left: 15%;
-      padding: 8px 10px;
-      background-color: #444444;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #toggle-news-btn {
-      display: none;
-  }
-    
-  .searchbar{
-    width: 90%; 
-      margin-right: 8%;
-      width: 10%;
-  }
-
-  /* meun css */
-  .menu-icon {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 30px;
-      height: 20px;
-      cursor: pointer;
-  }
-  .menu-icon span {
-      display: block;
-      height: 3px;
-      background-color: #2fb66e;
-      transition: 0.3s;
-      
-  }
-  .nav-links.show {
-      max-height: 200px; 
-  }
-
-  .menu-icon {
-      display: flex;
-  }
-
-  .menu-icon span:nth-child(2) {
-      
-      opacity: 1;
-  }
-
-  .menu-icon.open span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .menu-icon.open span:nth-child(2) {
-      opacity: 0;
-  }
-
-  .menu-icon.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-  }
-  .social-media {
-    margin-left: 0;
-    bottom: 5%; 
-    flex-direction: row; 
-    gap: 9px; 
-}
-
-.social-media a {
-    font-size: 20px; 
-}
-.search-results{
-  position: fixed;
-  top: 7.9%;
-  left: 2%;
-  width: 80%;
-  height: 90%;
-
-}
-  
-    
 }

@@ -19,36 +19,36 @@
 // ########################### NAme promp
 // Check if a name is already saved in localStorage
     // JavaScript Function to Redirect to Home Page
-    window.onload = function () {
-      const savedName = localStorage.getItem('userName');
-      if (savedName) {
-        console.log(savedName)
-        window.location.href = 'home.html';
-      } else {
-        window.location.href = 'home.html';// Default fallback
-      }}
-    function submitLogin() {
-      const username = document.getElementById('username').value.trim();
-      if (username) {
-          localStorage.setItem('userName', username); // Save name to localStorage
-          window.location.href = 'home.html'; // Redirect to home page
-      } else {
-          alert('Please enter your name!');
-      }
-  }
-  console.log(localStorage.getItem('userName'));
-  window.onload = function () {
-    const savedName = localStorage.getItem('userName');
-    if (savedName) {
-        document.getElementById('welcomeMessage').textContent = `Welcome, ${savedName}!`;
-    } else {
-        document.getElementById('welcomeMessage').textContent = `Hey Welcome!`; // Default fallback
-    }
-};
-function logout() {
-  localStorage.removeItem('userName'); // Clear stored name
-  window.location.href = 'index.html'; // Redirect to login page
-}
+//     window.onload = function () {
+//       const savedName = localStorage.getItem('userName');
+//       if (savedName) {
+//         console.log(savedName)
+//         window.location.href = 'home.html';
+//       } else {
+//         window.location.href = 'home.html';// Default fallback
+//       }}
+//     function submitLogin() {
+//       const username = document.getElementById('username').value.trim();
+//       if (username) {
+//           localStorage.setItem('userName', username); // Save name to localStorage
+//           window.location.href = 'home.html'; // Redirect to home page
+//       } else {
+//           alert('Please enter your name!');
+//       }
+//   }
+//   console.log(localStorage.getItem('userName'));
+//   window.onload = function () {
+//     const savedName = localStorage.getItem('userName');
+//     if (savedName) {
+//         document.getElementById('welcomeMessage').textContent = `Welcome, ${savedName}!`;
+//     } else {
+//         document.getElementById('welcomeMessage').textContent = `Hey Welcome!`; // Default fallback
+//     }
+// };
+// function logout() {
+//   localStorage.removeItem('userName'); // Clear stored name
+//   window.location.href = 'index.html'; // Redirect to login page
+// }
 
 // //############################### Welcome section start
 // const hours = new Date().getHours();
@@ -113,6 +113,20 @@ const newsSectionn = document.getElementById('newsSection');
 let startX = 0;
 let endX = 0;
 
+// Function to adjust news section responsiveness
+function adjustNewsSection() {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth <= 768) {
+    // Ensure the news section is hidden initially for small screens
+    newsSectionn.style.right = '-100%';
+    newsSectionn.style.width = '80%'; // Adjust width for smaller screens
+  } else {
+    // Reset for larger screens
+    newsSectionn.style.right = '-100%';
+    newsSectionn.style.width = '30%'; // Normal width for desktop
+  }
+}
 // Detect swipe gesture
 document.body.addEventListener('touchstart', (e) => {
   startX = e.touches[0].clientX;
@@ -138,6 +152,7 @@ document.addEventListener('click', (e) => {
     newsSectionn.classList.remove('open');
   }
 });
+
 
 //###############################  news section small screen end
 
@@ -201,10 +216,19 @@ document.addEventListener('DOMContentLoaded', function () {
 // JavaScript for News Toggle Button
 const toggleNewsBtn = document.getElementById("toggle-news-btn");
 const newsSection = document.querySelector(".news-section");
+const mainContent = document.querySelector(".main");
 
 toggleNewsBtn.addEventListener("click", () => {
     newsSection.classList.toggle("hidden");
     newsSection.classList.toggle("show");
+    // Check if the news section is now visible
+    if (newsSection.classList.contains("show")) {
+      // News section is visible, set main content width to 67%
+      mainContent.style.width = "auto";
+  } else {
+      // News section is hidden, set main content width to auto
+      mainContent.style.width = "67%";
+  }
 });
 
 

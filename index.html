@@ -1,178 +1,216 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>/* name prompt */
-        body{
-        
-            background-color: #000000;
-        }
-        body, html {
-            overflow-y: hidden;
-            overflow-x: hidden; 
-        }
-        #nameForm {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          color: #ffffff; /* White text color */
-          display: flex;
-          flex-direction: column;
-          justify-content: center; /* Center vertically */
-          align-items: center; /* Center horizontally */
-          z-index: 1000; /* Ensure it stays on top of everything */
-          overflow: hidden; /* Prevent scrolling */
-        }
-        
-        /* Heading and Input Styling */
-        #nameForm h1 {
-          font-size: 2.5rem;
-          margin-bottom: 20px;
-          text-align: center;
-        }
-        
-        #nameForm input {
-          width: 80%;
-          max-width: 400px;
-          padding: 10px;
-          margin-bottom: 15px;
-          border-radius: 5px;
-          border: 1px solid #ddd;
-          font-size: 1rem;
-          outline: none;
-        }
-        
-        #nameForm button {
-          padding: 10px 20px;
-          font-size: 1.2rem;
-          cursor: pointer;
-          background: #4CAF50;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          transition: background 0.3s ease;
-        }
-        
-        #nameForm button:hover {
-          background: #45a049;
-        }</style>
-    <title>Login</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sri.in</title>
+  <link rel="icon" type="image/x-icon" href="1.png">  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet">
+  <!-- google analytic tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4RY8PFTJM"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q4RY8PFTJM');
+  </script>
+
 </head>
 <body>
-    <script>
-     window.onload = function () {
-    const savedName = localStorage.getItem('userName');
-    if (savedName) {
-      console.log(savedName)
-      window.location.href = 'home.html';
-    } else {
-      window.location.href = 'home.html';// Default fallback
-    }}
-    </script>
-    <canvas id="background"></canvas>
-    <div id="nameForm">
-        <h1>Enter Your Name</h1>
-        <input type="text" id="username" placeholder="Your name..." />
-        <button onclick="submitLogin()">Submit</button>
+  <!-- Fullscreen Form (Add this above the welcome section) -->
+<!-- <div id="nameForm">
+  <h1>Enter Your Name</h1>
+  <input type="text" id="username" placeholder="Your name..." />
+  <button onclick="enterWebsite()">Submit</button>
+</div> -->
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="image-container"><img src="1.png" alt="Your Image"></div>
+    
+    <h1>Srimant</h1>
+
+    <div class="scroll-stick"></div>
+    <a class="sidebar-link active" href="index.html">Home</a>
+    <a class="sidebar-link" href="about.html">About</a>
+    <a class="sidebar-link" href="#writeups">Writeups</a>
+    <a class="sidebar-link" href="#tools">Tools</a>
+    <a class="sidebar-link" href="https://srimantb.github.io/notes">Notes</a>
+    <a class="sidebar-link" href="https://buymeacoffee.com/srimant">Buy Me a Coffee</a>
+    <a class="sidebar-link" href="#upi">UPI:sri0@upi</a>
+
+  
+
+     <!-- sidebar contact details -->
+      <div class="social-media">
+        <a href="https://github.com/srimantb" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/5rimant" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com/srimantk666" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:srimant.work@example.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <!-- <a href="https://www.linkedin.com/in/srii0/" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a> -->
+        <!-- <a href="https://www.reddit.com/r/hackerBBSR/" target="_blank">
+          <i class="fab fa-reddit"></i>
+        </a> -->
+      </div>
+
+
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Main Content -->
+  <div>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="menu-icon" id="menu-icon" onclick="toggleSidebar()" >
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+      
+      <!-- <button class="menu-toggle" onclick="toggleSidebar()">☰</button> -->
+      
+      <span id="span"></span>
+      
+      <button id="toggle-news-btn">News</button>
+      <!-- <button class="logout" onclick="logout()">Logout</button> -->
+      <input class="searchbar" type="text" id="searchBar" placeholder="Search..." onkeyup="searchArticles()" onclick="searchArticles()">
+    </div>
+    <div class="search-results" id="searchResults" style="display: none;">
+      <!-- Cards will be generated dynamically here -->
+    </div>
+   
+    <!-- Content Area -->
+    <div class="main">
+      <div class="welcome-section">
+        <h1 id="welcomeMessage" class="welcome-title">Hey' Welcome!</h1>
+        <p>Here you can explore, learn, and dominate the cyber world.</p>
+        <div class="divider"></div>
+        <p >“The quieter you become, the more you are able to hear.”</p> <!--class="quote" add to change quote-->
+    </div>
+    
+
+
+      <!-- #############################   recent POst -->
+  <br><h2>Recent Posts</h2>
+  <div class="grid-container">
+  <div class="recent-posts">
+    <!-- Card 1 -->
+    <div class="post-card">
+      <img src="linux.png" alt="Hacky Easter 2023" class="post-image" />
+      <div class="post-content">
+        <h3 class="post-title">Linux Hacking Basics</h3>
+        <p class="post-description">
+          A beginner's guide to hacking in Linux.
+        </p>
+        <div class="post-date">
+          <i class="fa fa-calendar"></i> 1/12/2024
+        </div>
+      </div>
+    </div>
+  
+    <!-- Card 2 -->
+    <div class="post-card">
+      <img src="linux.png" alt="Hackvent 2022" class="post-image" />
+      <div class="post-content">
+        <h3 class="post-title">Top Tools for Linux Hacking</h3>
+        <p class="post-description">
+          List of essential tools for Linux hacking.
+        </p>
+        <div class="post-date">
+          <i class="fa fa-calendar"></i> 19/11/2024
+        </div>
+      </div>
+    </div>
+  
+    <!-- Card 3 -->
+    <div class="post-card">
+      <img src="windows.png" alt="Hacky Easter 2022" class="post-image" />
+      <div class="post-content">
+        <h3 class="post-title">Advanced windows Hacking Techniques</h3>
+        <p class="post-description">
+          The annual Hacky Easter Event from Hacking-Lab.
+        </p>
+        <div class="post-date">
+          <i class="fa fa-calendar"></i> 01/04/2022
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- #############################   recent post end -->
+
     </div>
 
-    <script>
-        // Particle desine
-// #########################################################################
-const canvas = document.getElementById("background");
-const ctx = canvas.getContext("2d");
+  </div>
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+  
+  
+  
+   <!-- #################################  News Section -->
+   <div class="news-section" id="newsSection">
+    <h2>The Cyber News</h2>
+    <a href="#"><div class="news-card">
+      <h3>Trojan Horse has detected</h3>
+      <p>Cybersecurity breach detected in a major tech company...</p>
+    </div></a>
+    <a href="#"><div class="news-card">
+      <h3>Mirai malware targeting IOT</h3>
+      <p>Mirai malware targeting IoT devices has been discovered...</p>
+    </div></a>
+    <a href="#"><div class="news-card">
+      <h3>Tips to secure your data</h3>
+      <p>Top 10 tips to secure your personal data online...</p>
+    </div></a>
+  </div>
+  <div class="swipe-indicator"></div>
+   <!-- #################################  News Section End -->
+   <div class="container">
+   <div id="articles">
+    <div class="article" data-tags="linux hacking, security, pentesting">
+      <a href="#linux-hacking-article">Linux Hacking Basics</a>
+      <p>A beginner's guide to hacking in Linux.</p>
+    </div>
+    <div class="article" data-tags="linux, hacking, tools">
+      <a href="#linux-hacking-tools">Top Tools for Linux Hacking</a>
+      <p>List of essential tools for Linux hacking.</p>
+    </div>
+    <div class="article" data-tags="cybersecurity, hacking, linux">
+      <a href="#advanced-hacking-techniques">Advanced Linux Hacking Techniques</a>
+      <p>Learn advanced techniques for exploiting Linux systems.</p>
+    </div>
+    <div class="article" data-tags="cybersecurity, hacking, linux">
+      <a href="#advanced-hacking-techniques">Advanced Linux Hacking Techniques</a>
+      <p>Learn advanced techniques for exploiting Linux systems.</p>
+    </div>
+    <div class="article" data-tags="cybersecurity, windows, linux">
+      <a href="#advanced-hacking-techniques">Advanced windows Hacking Techniques</a>
+      <p>Learn advanced techniques for exploiting windows systems.</p>
+    </div>
+    <div class="article" data-tags="cybersecurity, windows, linux">
+      <a href="#advanced-hacking-techniques">Advanced windows Hacking Techniques</a>
+      <p>Learn advanced techniques for exploiting windows systems.</p>
+    </div>
+   </div>
 
-let particles = [];
+  </div>
 
-class Particle {
-  constructor(x, y, dx, dy, radius) {
-    this.x = x;
-    this.y = y;
-    this.dx = dx;
-    this.dy = dy;
-    this.radius = radius;
-  }
-
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    ctx.fillStyle = "#0f0";
-    ctx.fill();
-    ctx.closePath();
-  }
-
-  update() {
-    if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-      this.dx = -this.dx;
-    }
-    if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-      this.dy = -this.dy;
-    }
-    this.x += this.dx;
-    this.y += this.dy;
-
-    this.draw();
-  }
-}
-
-function init() {
-  particles = [];
-  for (let i = 0; i < 100; i++) {
-    const radius = 2;
-    const x = Math.random() * (canvas.width - radius * 2) + radius;
-    const y = Math.random() * (canvas.height - radius * 2) + radius;
-    const dx = (Math.random() - 0.5) * 2;
-    const dy = (Math.random() - 0.5) * 2;
-    particles.push(new Particle(x, y, dx, dy, radius));
-  }
-}
-
-function connect() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i; j < particles.length; j++) {
-      const distance = Math.hypot(
-        particles[i].x - particles[j].x,
-        particles[i].y - particles[j].y
-      );
-      if (distance < 100) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = "rgba(0, 255, 0, 0.2)";
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        ctx.closePath();
-      }
-    }
-  }
-}
-
-function animate() {
-  requestAnimationFrame(animate);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach((particle) => particle.update());
-  connect();
-}
-
-init();
-animate();
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
-});
-
-    </script>
-<script src="script.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </body>
 </html>
