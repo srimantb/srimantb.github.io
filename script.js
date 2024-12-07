@@ -16,97 +16,6 @@
      setInterval(updateDateTime, 60000);  // Update every minute
    };
 // ################## date and time End ##################
-// ########################### NAme promp
-// Check if a name is already saved in localStorage
-    // JavaScript Function to Redirect to Home Page
-//     window.onload = function () {
-//       const savedName = localStorage.getItem('userName');
-//       if (savedName) {
-//         console.log(savedName)
-//         window.location.href = 'home.html';
-//       } else {
-//         window.location.href = 'home.html';// Default fallback
-//       }}
-//     function submitLogin() {
-//       const username = document.getElementById('username').value.trim();
-//       if (username) {
-//           localStorage.setItem('userName', username); // Save name to localStorage
-//           window.location.href = 'home.html'; // Redirect to home page
-//       } else {
-//           alert('Please enter your name!');
-//       }
-//   }
-//   console.log(localStorage.getItem('userName'));
-//   window.onload = function () {
-//     const savedName = localStorage.getItem('userName');
-//     if (savedName) {
-//         document.getElementById('welcomeMessage').textContent = `Welcome, ${savedName}!`;
-//     } else {
-//         document.getElementById('welcomeMessage').textContent = `Hey Welcome!`; // Default fallback
-//     }
-// };
-// function logout() {
-//   localStorage.removeItem('userName'); // Clear stored name
-//   window.location.href = 'index.html'; // Redirect to login page
-// }
-
-// //############################### Welcome section start
-// const hours = new Date().getHours();
-// const greeting =
-//     hours < 12
-//         ? "Good Morning, Hacker!"
-//         : hours < 18
-//         ? "Good Afternoon, Hacker!"
-//         : "Good Evening, Hacker!";
-// document.querySelector('.welcome-title').textContent = greeting;
-
-// Array of quotes
-// Array of quotes
-// const quotes = [
-//   "The quieter you become, the more you are able to hear.",
-//   "The only true wisdom is in knowing you know nothing. – Socrates",
-//   "Hack the planet!",
-//   "In the middle of difficulty lies opportunity. – Albert Einstein",
-//   "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill"
-// ];
-
-// Function to insert <br> tags for long quotes
-// function insertLineBreaks(text, maxLength = 50) {
-  // Split the text into an array of words
-  // let words = text.split(' ');
-  // let line = '';
-  // let result = [];
-
-  // Loop through the words and group them into lines
-  // words.forEach(word => {
-  //     if (line.length + word.length + 1 > maxLength) {
-  //         result.push(line);
-  //         line = word;
-  //     } else {
-  //         line += (line.length ? ' ' : '') + word;
-  //     }
-  // });
-  // Add any remaining text as the last line
-  // if (line) {
-  //     result.push(line);
-  // }
-
-  // Join the lines with <br> tags
-  // return result.join('<br>');
-// }
-
-// Function to change the quote
-// function changeQuote() {
-//   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-//   const formattedQuote = insertLineBreaks(randomQuote);
-//   document.querySelector(".quote").innerHTML = formattedQuote;
-// }
-
-// Change the quote on page load
-// window.onload = changeQuote;
-
-
-// //############################### Welcome section end
 
 //###############################  news section small screen
 const newsSectionn = document.getElementById('newsSection');
@@ -214,29 +123,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // J####################  javaScript for News Toggle Button
 // JavaScript for News Toggle Button
-const toggleNewsBtn = document.getElementById("toggle-news-btn");
-const newsSection = document.querySelector(".news-section");
-const mainContent = document.querySelector(".main");
+document.addEventListener("DOMContentLoaded", () => {
+  const newsSection = document.getElementById("newsSection");
+  const toggleNewsBtn = document.getElementById("toggle-news-btn");
+  const mainContent = document.querySelector(".main");
 
-toggleNewsBtn.addEventListener("click", () => {
-  newsSection.classList.toggle("hidden");
-  newsSection.classList.toggle("show");
+  // Ensure news section is hidden initially
+  newsSection.classList.add("hidden");
 
-  // Check if the news section is now visible
-  if (newsSection.classList.contains("show")) {
-    // News section is visible, set main content width to auto
-    mainContent.style.width = "auto";
-  } else {
-    // News section is hidden, set main content width based on screen size
-    if (window.innerWidth >= 1025) {
-      mainContent.style.width = "60%"; // For larger screens
-    } else {
-      mainContent.style.width = "67%"; // For smaller screens
-    }
-  }
+  toggleNewsBtn.addEventListener("click", () => {
+    newsSection.classList.toggle("hidden");
+    newsSection.classList.toggle("show");
+
+    
+  });
 });
-
-
 // search result
 
 // Function to perform search and display results
@@ -284,4 +185,36 @@ document.addEventListener("click", (e) => {
 });
 
 
+//  ################################################   TOC list the contents
+// JavaScript to highlight active ToC link
+document.addEventListener("DOMContentLoaded", () => {
+  const tocLinks = document.querySelectorAll(".toc-link");
+  const sections = document.querySelectorAll("section");
 
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const tocLink = document.querySelector(
+          `.toc-link[href="#${entry.target.id}"]`
+        );
+
+        if (entry.isIntersecting) {
+          tocLinks.forEach((link) => link.classList.remove("active"));
+          tocLink.classList.add("active");
+        }
+      });
+    },
+    { root: null, threshold: 0.6 }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+
+  tocLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+});

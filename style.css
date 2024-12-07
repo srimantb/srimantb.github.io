@@ -14,7 +14,7 @@ body {
   min-height: 100%;
 
 
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
   line-height: 1.6;
 }
 
@@ -81,21 +81,31 @@ cursor: pointer;
 /* ##########################################  Top Navbar End */
 /* ##########################################  Sidebar start */
 /* Left Sidebar */
-.sidebar{
-width: 250px;
-background-color: #2b2b2b;
-height: 100%;
+.sidebar {
+display: flex;               /* Use flexbox for the entire sidebar */
+flex-direction: column;      /* Stack items vertically */
+justify-content: space-between; /* Align content with space between */
+position: fixed;             /* Fixed sidebar */
+top: 0;
+left: 0;
+align-items: center;
+width: 250px;                /* Sidebar width */
+height: 100%;                /* Full viewport height */
+background-color: #2b2b2b;   /* Adjust as per your design */
+padding: 15px;
+box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-content {
+flex: 1;                     /* Take up remaining space */
 display: flex;
 flex-direction: column;
 align-items: center;
-padding-top: 20px;
-position: fixed;
-left: 0;
-top: 0;
-z-index: 1000;
-transition: transform 0.3s ease-in-out;
-
+overflow-y: auto;            /* Enable scrolling if content exceeds height */
+width: 100%;                 /* Ensure content stays within sidebar width */
+padding-bottom: 15px;        /* Add space for bottom elements */
 }
+
 .sidebar img {
 margin-top: 15%;
 width: 100px;
@@ -104,51 +114,51 @@ border-radius: 50%;
 margin-bottom: 10px;
 animation: fadeIn 1s ease-in-out;
 }
+
 .sidebar h1 {
 color: white;
-margin-top: 5%;
-/* margin: 0; */
+margin-top: 10%;
 font-size: 20px;
 margin-bottom: 20px;
 text-align: center;
 animation: slideIn 0.5s ease-in-out;
 }
+
 .sidebar a {
-margin: 10px 0;
+font-size: 20px;
+color: #c4c4c4;
+transition: color 0.3s ease-in-out;
 }
+
 .sidebar a:hover {
 text-decoration: underline;
 }
+
 .social-media {
-position: absolute; 
-bottom: 10%;
-left: 25%; 
-/* Center horizontally */
-display: flex;
-flex-wrap: wrap; 
-gap: 10px; 
-justify-content: center;
+display: flex;               /* Flexbox for icons */
+justify-content: center;     /* Center icons horizontally */
+gap: 10px;                   /* Space between icons */
+margin-top: auto;            /* Stay at the bottom */
 }
 .social-media a {
-font-size: 20px; 
+color: #00ff00;
+font-size: 20px;
 }
 
-/* stick  */
 .sidebar-link {
-max-height: 100vh; /* Prevent overflow beyond viewport height */
 display: block;
-padding: 5px 10px;
-margin-bottom: 10px;
 color: #c4c4c4;
 text-decoration: none;
 font-size: 15px;
-position: relative;
+margin-bottom: 15px;
+padding: 5px 10px;
 transition: color 0.3s ease-in-out;
 }
 
 .sidebar-link:hover {
 color: #39c939;
 }
+
 
 /* Scroll stick styling */
 .scroll-stick {
@@ -180,7 +190,7 @@ background-color: #39c939;
 
 /* ####################################### Image animation Logo */
 .image-container {
-margin-top: 5%;
+margin-top: -10%;
 margin-bottom: 10%;
 margin-left: 1%;
 position: relative;
@@ -296,7 +306,7 @@ text-decoration: none;
 /* ########################################## Main container start */
 /* Main Content */
 .main{
-width: calc(100% - 400px);
+width:auto;
 margin-top: 3%;
 margin-left: 250px;
 padding: 20px;
@@ -317,9 +327,23 @@ transition: all 0.3s ease-in-out;
 
 color: #ffffff; 
 font-size: 3rem; 
+overflow: hidden;
+white-space: nowrap;
 margin-bottom: 20px; 
 font-family: 'Roboto', sans-serif; 
 font-weight: bold;
+animation: typing 3s steps(1000, end), blink 0.7s step-end infinite alternate;
+}
+.welcome-section:before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><line x1="0" y1="0" x2="100%" y2="0" stroke="rgba(255,255,255,0.02)" stroke-width="1"/><line x1="0" y1="20" x2="100%" y2="20" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></svg>');
+opacity: 0.5;
+pointer-events: none;
 }
 .welcome-section p {
 color: #e4e4e4;
@@ -349,21 +373,13 @@ margin: 20px auto;
 }
 /* Keyframe animations for the typing effect */
 @keyframes typing {
-from {
-    width: 0;
-}
-to {
-    width: 70%;
-}
+from { width: 0; }
+to { width: 100%; }
 }
 
 @keyframes blink {
-from {
-    border-right-color: #2fb66e;
-}
-to {
-    border-right-color: transparent;
-}
+from { border-right-color: #2fb66e; }
+to { border-right-color: transparent; }
 }
 /* Welcome messagae desing End */
 /* ######################################### Recent POsts */
@@ -372,9 +388,9 @@ display: grid;
 grid-template-columns: repeat(2, 1fr); 
 gap: 20px; 
 row-gap: 10px; 
-
 padding: 10px;
 }
+
 
 /* Card styles */
 .post-card {
@@ -394,10 +410,13 @@ transform: translateY(-5px);
 }
 .grid-container {
 display: grid;
-column-gap: 50px;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 20px;
+padding: 10px;
 }
 /* Image styles */
 .post-image {
+margin-top: 25px;
 width: 100px;
 height: 100px;
 object-fit: cover;
@@ -518,6 +537,91 @@ visibility: hidden;
 }
 
 /* search result end */
+
+/* ################################################## right side table of contents start */
+/* General container styling */
+.container {
+display: flex;
+justify-content: space-between;
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+}
+
+/* Main content styling */
+.post-content {
+width: 70%; /* Adjust width of main content */
+padding-right: 20px;
+}
+
+.post-content h1, .post-content h2, .post-content p {
+margin-bottom: 20px;
+}
+
+/* Sidebar (Table of Contents) styling */
+.table-of-contents {
+position: fixed;
+height: 100%;
+top: 5%;
+margin-right: -0.5%;
+right: 10px;
+width: 300px;
+overflow-y: auto;
+background-color: #2b2b2b;
+padding: 15px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.table-of-contents h3 {
+margin-top: 5%;
+color: #ffffff;
+text-align: center;
+margin-bottom: 15px;
+}
+
+.table-of-contents ul {
+list-style-type: none;
+padding: 0;
+}
+
+.table-of-contents a {
+display: block;
+color: #c4c4c4;
+text-decoration: none;
+padding: 5px 15px;
+margin: 5px 0;
+border-left: 3px solid transparent;
+transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.table-of-contents a:hover {
+color: white;
+}
+
+.table-of-contents a.active {
+color: white;
+border-left: 3px solid white; /* Highlight active section */
+}
+
+.table-of-contents ul ul {
+padding-left: 20px; /* Indent subsections */
+}
+.toc-link.active {
+
+color: #fff; /* Highlight text color */
+border-left: 5px solid #fff; /* White stick indicator */
+padding-left: 10px; /* Adjust padding for stick effect */
+transition: background-color 0.3s, color 0.3s;
+}
+
+section {
+padding: 50px;
+margin: 20px 0;
+border: 1px ;
+}
+
+/* ################################################## right side table of contents end */
+
 /* ###################################################################  General Design End ############################################################# */
 /* ############################## Animation */
 /* Animations */
@@ -546,31 +650,65 @@ to {
 
 
 /* ####################### smaller smartphones or narrow viewport screens ###########################*/
-@media screen and (max-width: 480px){
-.sidebar-link {
-  font-size: 12px; /* Further reduce font size for very small screens */
-  padding: 5px 10px;
-}
+@media  screen and (max-width: 480px){
+.search-results{
+  position: fixed;
+  top: 7.9%;
+  left: 10%;
+  width: 80%;
+  height: 90%;
 
+}
+.image-container{
+  margin-top: 10%;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+  gap: 1px;
+  padding: 20px;
+}
+.recent-posts {
+  margin-right: -10%;
+  margin-left: -13%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); 
+  gap: 10px; 
+  row-gap: 2px; 
+  padding: 0px;
+}
+.sidebar-link {
+  font-size: 14px; /* Slightly smaller font size */
+  padding: 8px 12px; /* Reduce padding to save space */
+}
 .news-section {
   margin-top: 7%;
 }
-.searchbar{
-  width: 30%;
+.welcome-title {
+  font-size: 2.5rem; 
+}
+.welcome-section{
+  width: 110%;
+  margin-top: 10%;
+}
+.main {
+  margin-top: 3%;
+  width: auto;
+  margin-left: 0;
 }
 
 .news-section {
   right: -100%; 
   width: 80%; /* Wider for small screens */
 }
-
+#toggle-news-btn {
+display: none;
+}
 .swipe-indicator { 
 display: block;
 }
-
 .main {
-  width: 100%;
-  margin-left: 0;
+  width: auto;
 }
 .navbar {
   position: fixed;
@@ -635,7 +773,23 @@ display: block;
   
 
 /* ####################### Commonly used for very small screens, such as mobile phones ###########################*/
-@media (max-width: 600px){
+@media (min-width:481px) and (max-width: 600px){
+.image-container{
+  margin-top: 10%;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+.recent-posts {
+  display: grid;
+  grid-template-columns: repeat(1, 4fr); 
+  gap: 10px; 
+  row-gap: 10px; 
+  padding: 10px;
+}
 .sidebar-link {
   font-size: 14px; /* Slightly smaller font size */
   padding: 8px 12px; /* Reduce padding to save space */
@@ -644,24 +798,15 @@ display: block;
   margin-top: 7%;
 }
 .welcome-section{
-  width: 110%;
+  width: auto;
   margin-top: 10%;
 }
 .main {
   margin-top: 3%;
-  width: 95%;
+  width: auto;
   margin-left: 0;
 }
 
-.recent-posts {
-  /* width: 100%; */
-  margin-left: -5%;
-  margin-right: -20%; 
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Two posts per row */
-  gap: 20px; /* Space between posts */
-  padding: 10px;
-}
 .news-section {
   right: -100%; 
   width: 80%; /* Wider for small screens */
@@ -737,7 +882,10 @@ display: block;
 
 }
 /* ####################### This can overlap with phones and some tablets in portrait mode. ###########################*/
-@media screen and (max-width: 700px){
+@media (min-width: 601px) and (max-width: 768px){
+.image-container{
+  margin-top: 10%;
+}
 .search-results{
   position: fixed;
   top: 7.9%;
@@ -749,29 +897,27 @@ display: block;
 .news-section {
   margin-top: 9%;
 }
-.recent-posts {
-  /* width: 100%; */
-  margin-left: -5%;
-  margin-right: -20%; 
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Two posts per row */
-  gap: 20px; /* Space between posts */
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+.recent-posts {
+  display: grid;
+  grid-template-columns: repeat(1, 4fr); 
+  gap: 10px; 
+  row-gap: 10px; 
   padding: 10px;
 }
 .welcome-section{
-  width: 110%;
+  width: auto;
   margin-top: 10%;
 }
 .main {
   margin-top: 3%;
-  width: 95%;
+  width: auto;
   margin-left: 0;
-}
-.recent-posts {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Two posts per row */
-  gap: 20px; /* Space between posts */
-  padding: 10px;
 }
 .news-section {
   right: -100%; 
@@ -847,8 +993,22 @@ display: block;
   
     
 /* ####################### Commonly used for tablets and some smaller desktop screens ###########################*/
-@media (min-width: 601px) and (max-width: 1024px){
-  
+@media (min-width: 769px) and (max-width: 1024px){
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+.recent-posts {
+  display: grid;
+  grid-template-columns: repeat(1, 4fr); 
+  gap: 10px; 
+  row-gap: 10px; 
+  padding: 10px;
+}
+
 .search-results{
   position: fixed;
   top: 7.9%;
@@ -859,12 +1019,6 @@ display: block;
 }
 .news-section {
   margin-top: 5%;
-}
-.recent-posts {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Two posts per row */
-  gap: 20px; /* Space between posts */
-  padding: 10px;
 }
 #toggle-news-btn {
   margin-left: 10%;
@@ -884,26 +1038,252 @@ display: block;
   cursor: pointer;
 }
 .welcome-section{
-  /* width: 110%; */
-  margin-top: 20%;
+  margin-top: 5%;
 }
 }
 /* #######################  Typically used for larger desktops and laptops. ###########################*/
-@media (min-width: 1025px){
-  .sidebar-link {
-    max-height: 100vh; /* Prevent overflow beyond viewport height */
-    display: block;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    color: #c4c4c4;
-    text-decoration: none;
-    font-size: 13px;
-    position: relative;
-    transition: color 0.3s ease-in-out;
-    }
 
-    .main {
-      width: 60%;
-    }
+@media (min-width: 1026px) and (max-width: 1399px){
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(800px, 1fr));
+  gap: 1px;
+  padding: 10px;
+}
+.recent-posts {
+  display: grid;
+  grid-template-columns: repeat(2, 4fr); 
+  gap: 50px; 
+  row-gap: 10px; 
+  padding: 10px;
+}
+
+.main{
+  width: auto;
+  
+  } 
+  .welcome-section{
+    margin-top: 3%;
+  
+  } 
+  
+  .news-section {
+    margin-top: 2%;
+    width: 400px;
+    background-color: #282828;
+    color: #e5eee5;
+    padding: 20px;
+    overflow-y: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+  }
+
+}
+ 
+@media (min-width: 1400px) and (max-width: 1700px){
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1200px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+.recent-posts {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 4fr); 
+  gap: 20px; 
+  row-gap: 10px; 
+  padding: 10px;
+}
+
+.main{
+width: auto;
+justify-content: center;
+margin-left: 15%;
+
+} 
+.welcome-section{
+  margin-top: 1%;
+  /* margin-right: 8%; */
+} 
+
+.news-section {
+  margin-top: 2%;
+  width: 400px;
+  background-color: #282828;
+  color: #e5eee5;
+  padding: 20px;
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+}
+@media (min-width: 1701px) and (max-width: 1899px){
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1200px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+.recent-posts {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 4fr); 
+  gap: 20px; 
+  row-gap: 10px; 
+  padding: 10px;
+}
+
+.main{
+  justify-content: center;
+  width: auto;
+  
+  } 
+  .welcome-section{
+    margin-top: 5%;
+    /* margin-right: 8%; */
+  } 
+  
+  .news-section {
+    margin-top: 2%;
+    width: 400px;
+    background-color: #282828;
+    color: #e5eee5;
+    padding: 20px;
+    overflow-y: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+@media (min-width: 1900px) and (max-width: 2310px){
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1000px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+.recent-posts {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 4fr); 
+  gap: 20px; 
+  row-gap: 10px; 
+  padding: 10px;
+}
+
+.main{
+  width: auto;
+  margin-top:1%;
+  margin-left: 13%;
+}  
+.welcome-section{
+  margin-top: 2%;
+  /* margin-right: 8%; */
+} 
+.news-section {
+  margin-top: 2%;
+  width: 400px;
+  background-color: #282828;
+  color: #e5eee5;
+  padding: 20px;
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+}
+
+@media (min-width: 2311px) and (max-width: 3300px){
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1500px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+.recent-posts {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 4fr); 
+  gap: 20px; 
+  row-gap: 10px; 
+  padding: 10px;
+}
+.main{
+width: auto;
+justify-content: center;
+}  
+
+
+
+.news-section {
+margin-top: 2%;
+width: 500px;
+background-color: #282828;
+color: #e5eee5;
+padding: 20px;
+overflow-y: auto;
+position: fixed;
+right: 0;
+top: 0;
+height: 100%;
+box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+transition: transform 0.3s ease-in-out;
+}
+
+
+}
+
+@media (min-width: 3300px) {
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(3000px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+.recent-posts {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 4fr); 
+  gap: 20px; 
+  row-gap: 10px; 
+  padding: 10px;
+}
+.main{
+width: auto;
+justify-content: center;
+}  
+
+
+
+.news-section {
+margin-top: 2%;
+width: 500px;
+background-color: #282828;
+color: #e5eee5;
+padding: 20px;
+overflow-y: auto;
+position: fixed;
+right: 0;
+top: 0;
+height: 100%;
+box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+transition: transform 0.3s ease-in-out;
+}
 
 }
