@@ -581,7 +581,7 @@ to {
     padding: 20px;
   }
   .recent-posts {
-    margin-right: -8%;
+    margin-right: -10%;
     margin-left: -13%;
     display: grid;
     grid-template-columns: repeat(1, 1fr); 
@@ -600,7 +600,7 @@ to {
   font-size: 2rem; 
 }
 .welcome-section{
-  width: auto;
+  width: 110%;
   margin-top: 10%;
 }
 .main {
