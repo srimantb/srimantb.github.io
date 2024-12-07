@@ -575,6 +575,9 @@ to {
     height: 90%;
   
   }
+  .image-container{
+    margin-top: 10%;
+  }
   .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
