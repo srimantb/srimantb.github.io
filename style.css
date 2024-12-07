@@ -417,6 +417,7 @@ padding: 10px;
 }
 /* Image styles */
 .post-image {
+margin-top: 25px;
 width: 100px;
 height: 100px;
 object-fit: cover;
