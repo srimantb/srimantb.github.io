@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <meta name="keywords" content="srimant, hacking, networking, python, ctf, writeups, blog, ethical-hacking, cybersecurity">
+  <meta name="author" content="srimant">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="G-Q4RY8PFTJM">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="KOW_MGM-MU4Ole7gOV5JmXS0oAfJY-RaSg0_8jhcwuY" />
+
+ <!-- cache control metatag -->
+ <meta http-equiv="cache-control" content="public, max-age=3600" />
+<meta http-equiv="expires" content="Thu, 01 Jan 2025 00:00:00 GMT" />
+
+
+  <title>Blogs</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/logo.png">  
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+
+  <style>
+  /* General Body Styling */
+
+.breadcrumb{
+  margin-left: -80%;
+  justify-content: left;
+  text-align: left;
+}
+/* Header */
+header h1 {
+  text-align: center;
+  color: #2fb66e; /* Green accent color */
+  margin: 20px 0;
+  font-size: 2.5rem;
+}
+
+/* Posts Container */
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: left;
+  padding: 20px;
+}
+
+/* Individual Post Cards */
+.post {
+  background-color: #2c2b2b; /* Slightly lighter dark for contrast */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  width: 300px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: fixedab;
+}
+
+/* Post Heading */
+.post h3 {
+  margin: 0 0 10px;
+  color: #2fb66e; /* Accent color */
+}
+
+/* Post Description */
+.post p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #e5e5e5;
+}
+
+/* Hover Effect for Posts */
+.post:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 255, 0, 0.3);
+}
+
+/* Anchor Tag Styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Responsive Design */
+@media  screen and (max-width: 480px){
+.post{
+  width: 90%;
+}
+}
+
+@media (max-width: 768px) {
+  body{
+    margin-top: 10%;
+  }
+
+  .posts {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .post {
+    width: 100%;
+  }
+  .breadcrumb{
+  margin-left: 0;
+  justify-content: left;
+  text-align: left;
+}
+}
+
+  </style>
+  <!-- google analytic tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4RY8PFTJM"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q4RY8PFTJM');
+  </script>
+
+</head>
+<body>
+ 
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="image-container"><img src="/assets/images/logo.png" alt="Your Image"></div>
+    
+    <h1 style="color: #01ff01;">Hack the World
+    </h1>
+
+    <a href="/index.html" class="nav-link">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="/writeup.html" class="nav-link">
+      <i class="fas fa-pencil-alt"></i> Writeups
+    </a>
+    <a href="/blog.html" class="nav-link">
+      <i class="fas fa-blog"></i> Blogs
+    </a>
+    <a href="/note.html" class="nav-link">
+      <i class="fas fa-sticky-note"></i> Notes
+    </a>
+    <a href="/about.html" class="nav-link">
+      <i class="fas fa-info-circle"></i> About
+    </a>
+   
+  
+
+     <!-- sidebar contact details -->
+      <div class="social-media">
+        <a href="https://github.com/srimantb" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/5rimant" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com/srimantk666" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:srimant.work@example.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+
+
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Main Content -->
+  <div>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="menu-icon" id="menu-icon" onclick="toggleSidebar()" >
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+ 
+           
+      <div id="breadcrumbPath" class="breadcrumb"></div>
+      
+      <!-- <button id="toggle-tag-btn" >Tags</button> -->
+      <button id="toggle-tag-btn"><i class="fa fa-bars"></i></button>
+
+    </div>
+    <div class="search-results" id="searchResults" style="display: none;">
+      <!-- Cards will be generated dynamically here -->
+    </div>
+   
+    <!-- Content Area -->
+    <div class="main">
+        <!-- Main Content -->
+        <div class="main-content">
+          
+            <div class="posts">
+            <a href="/blogs/networking/basicnetworking.html"><div class="post" data-tags="networking,linux">
+                <h3>Basic Networking</h3>
+                <p>This is a blog post about networking fundamentals.</p>
+                <div class="post-date">
+                  <i class="fa fa-calendar"></i> 01/04/2022
+                </div>
+            </div></a>
+            <div class="post" data-tags="ctf,tools">
+                <h3>Post 2: CTF Challenges</h3>
+                <p>This post discusses various Capture The Flag challenges.</p>
+            </div>
+            <div class="post" data-tags="python,reverce engineering">
+                <h3>Post 3: Python for Reverse Engineering</h3>
+                <p>Learn how Python is used in reverse engineering tasks.</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="tag-sidebar" id="tagSidebar">
+            <h2>Tags</h2>
+            <div class="tag-dropdown" id="tagdropdown"></div>
+            <ul class="tag-list">
+            <li class="tag" data-tag="networking">Networking <button class="delete-btn">x</button></li>
+            <li class="tag" data-tag="linux">Linux <button class="delete-btn">x</button></li>
+            <li class="tag" data-tag="windows">Windows <button class="delete-btn">x</button></li>
+            <li class="tag" data-tag="ctf">CTF <button class="delete-btn">x</button></li>
+            <li class="tag" data-tag="cve">CVE <button class="delete-btn">x</button></li>
+            <li class="tag" data-tag="tools">Tools <button class="delete-btn">x</button></li>
+            <li class="tag" data-tag="python">Python <button class="delete-btn">x</button></li>
+            <li class="tag" data-tag="reverce engineering">Reverse Engineering <button class="delete-btn">x</button></li>
+            </ul>
+        </div>  
+
+          
+    </div>
+    <script>
+      const toggletagBtn = document.getElementById("toggle-tag-btn");
+      const tagSection = document.getElementById("tagSidebar");
+      
+      toggletagBtn.addEventListener("click", () => {
+        tagSection.classList.toggle("hidden");
+        if (tagSection.classList.contains("hidden")) {
+          tagSection.style.transform = "translateX(0)"; // Hide sidebar
+        } else {
+          tagSection.style.transform = "translateX(100%)"; // Show sidebar
+        }
+      });
+      
+
+
+
+
+      const tagElements = document.querySelectorAll(".tag");
+      const selectedTags = new Set();
+      const posts = document.querySelectorAll(".post");
+      const tagList = document.querySelector(".tag-list");
+      const tagDropdown = document.querySelector(".tag-dropdown");
+  
+      // Toggle Dropdown for Smaller Screens
+      tagDropdown.addEventListener("click", () => {
+        tagList.classList.toggle("active");
+      });
+  
+      // Tag Selection and Filtering
+      tagElements.forEach((tag) => {
+        tag.addEventListener("click", (e) => {
+          const tagName = tag.getAttribute("data-tag");
+  
+          // Toggle tag selection
+          tag.classList.toggle("selected");
+          if (tag.classList.contains("selected")) {
+            selectedTags.add(tagName);
+          } else {
+            selectedTags.delete(tagName);
+          }
+  
+          // Move selected tags to the top
+          updateTagOrder();
+  
+          // Filter posts
+          filterPosts();
+        });
+      });
+  
+      // Delete Tag
+      document.querySelectorAll(".delete-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const tag = btn.parentElement;
+          const tagName = tag.getAttribute("data-tag");
+  
+          selectedTags.delete(tagName);
+          tag.remove();
+          filterPosts();
+        });
+      });
+  
+      // Move Selected Tags to Top
+      function updateTagOrder() {
+        const tags = Array.from(tagList.children);
+        tags.sort((a, b) => b.classList.contains("selected") - a.classList.contains("selected"));
+        tags.forEach((tag) => tagList.appendChild(tag));
+      }
+  
+      // Filter Posts Based on Tags
+      function filterPosts() {
+  const selected = Array.from(selectedTags);
+  
+  // If no tags are selected, show all posts
+  if (selected.length === 0) {
+    posts.forEach((post) => {
+      post.style.display = "block";
+    });
+    return;
+  }
+
+  posts.forEach((post) => {
+    const postTags = post.getAttribute("data-tags").split(",");
+    
+    // Check if the post matches any of the selected tags
+    const matches = selected.some((tag) => postTags.includes(tag));
+    post.style.display = matches ? "block" : "none";
+  });
+}
+
+    </script>
+    <script src="assets/scripts/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  </body>
+  </html>

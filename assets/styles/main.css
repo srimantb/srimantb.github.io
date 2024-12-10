@@ -28,6 +28,29 @@ body {
 }
 /* buttons */
 
+#toggle-toc-btn{
+
+  padding: 8px 10px;
+  background-color: #444444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+#toggle-tag-btn{
+
+ 
+  padding: 8px 10px;
+  background-color: #444444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
 /* button end */
 
 /* ##########################################  Top Navbar start */
@@ -70,14 +93,15 @@ border: none;
 border-radius: 5px;
 cursor: pointer;
 }
-.logout{
-padding: 8px 10px;
-background-color: #444444;
-color: #fff;
-border: none;
-border-radius: 5px;
-cursor: pointer;
+#span{
+  justify-content: left;
 }
+.breadcrumb{
+  justify-content:space-between
+}
+
+/* beadcrumbs */
+
 /* ##########################################  Top Navbar End */
 /* ##########################################  Sidebar start */
 /* Left Sidebar */
@@ -88,7 +112,7 @@ justify-content: space-between; /* Align content with space between */
 position: fixed;             /* Fixed sidebar */
 top: 0;
 left: 0;
-align-items: center;
+
 width: 250px;                /* Sidebar width */
 height: 100%;                /* Full viewport height */
 background-color: #2b2b2b;   /* Adjust as per your design */
@@ -97,6 +121,7 @@ box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-content {
+margin-left: 1%;
 flex: 1;                     /* Take up remaining space */
 display: flex;
 flex-direction: column;
@@ -107,6 +132,7 @@ padding-bottom: 15px;        /* Add space for bottom elements */
 }
 
 .sidebar img {
+margin-left: 15%;
 margin-top: 15%;
 width: 100px;
 height: 100px;
@@ -116,36 +142,39 @@ animation: fadeIn 1s ease-in-out;
 }
 
 .sidebar h1 {
+font-family: "Rubik Glitch", system-ui;
+font-weight: 400;
+font-style: normal;
+margin-left: 10%;
 color: white;
 margin-top: 10%;
-font-size: 20px;
+font-size: 25px;
 margin-bottom: 20px;
-text-align: center;
 animation: slideIn 0.5s ease-in-out;
 }
 
 .sidebar a {
-font-size: 20px;
+  font-family: "Press Start 2P", system-ui;
+font-style: normal;
+  margin-left: 8%;
+font-size: 18px;
 color: #c4c4c4;
 transition: color 0.3s ease-in-out;
 }
 
-.sidebar a:hover {
-text-decoration: underline;
-}
 
 .social-media {
-display: flex;               /* Flexbox for icons */
-justify-content: center;     /* Center icons horizontally */
-gap: 10px;                   /* Space between icons */
-margin-top: auto;            /* Stay at the bottom */
-}
+  display: flex;              
+  gap: 1px;                  
+  margin-top: auto;           
+  }
 .social-media a {
-color: #00ff00;
+  margin-left: 12%;
+color: #01ff01;
 font-size: 20px;
 }
 
-.sidebar-link {
+.nav-link {
 display: block;
 color: #c4c4c4;
 text-decoration: none;
@@ -155,28 +184,29 @@ padding: 5px 10px;
 transition: color 0.3s ease-in-out;
 }
 
-.sidebar-link:hover {
-color: #39c939;
+/* .nav-link:hover{
+background-color: rgba(57, 201, 57, 0.1); 
+} */
+
+.nav-link:hover {
+  
+  color: #39c939; /* Change text color */
+  border:1px solid #308d30; /* Add a border when hovered */
+  box-shadow: 0 0 15px rgba(57, 201, 57, 0.8); /* Add glow effect */
+  border-radius: 30px 30px 30px 30px; 
+
+
 }
-
-
-/* Scroll stick styling */
-.scroll-stick {
-position: absolute;
-width: 3px; 
-height: 10px; 
-background-color: white;
-left: 0; 
-top: 10px; 
-transition: top 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+.nav-link {
+  transition: color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Active link styling */
-.sidebar-link.active {
+.nav-link.active {
 color: #39c939;
 }
 
-.sidebar-link.active::before {
+.nav-link.active::before {
 content: '';
 position: absolute;
 height: 3px;
@@ -185,6 +215,27 @@ bottom: 0;
 left: 0;
 background-color: #39c939;
 }
+
+/* Active Link Styling */
+#current {
+  background-color: #00bcd4;
+  color: #fff;
+  border-radius: 15px;
+  animation: highlight 0.8s ease-in-out;
+}
+
+/* Highlight Animation */
+@keyframes highlight {
+  0% {
+      transform: scale(0.9);
+      opacity: 0.8;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
 
 /* ##########################################  Sidebar End */
 
@@ -251,11 +302,11 @@ right: 0; /* Fully visible when open */
 }
 
 .news-section.hidden {
-transform: translateX(100%);
+transform: translateX(0);
 }
 
 .news-section {
-transform: translateX(0);
+transform: translateX(100%);
 transition: transform 0.3s ease-in-out;
 }
 
@@ -306,7 +357,7 @@ text-decoration: none;
 /* ########################################## Main container start */
 /* Main Content */
 .main{
-width:auto;
+/* width:auto; */
 margin-top: 3%;
 margin-left: 250px;
 padding: 20px;
@@ -324,13 +375,13 @@ transition: all 0.3s ease-in-out;
 }
 
 .welcome-title {
-
-color: #ffffff; 
+color: #138808; 
 font-size: 3rem; 
 overflow: hidden;
 white-space: nowrap;
 margin-bottom: 20px; 
-font-family: 'Roboto', sans-serif; 
+font-family: "Press Start 2P", system-ui;
+font-style: normal;
 font-weight: bold;
 animation: typing 3s steps(1000, end), blink 0.7s step-end infinite alternate;
 }
@@ -350,7 +401,8 @@ color: #e4e4e4;
 font-size: 1.2rem; 
 line-height: 1.6;
 margin: 20px 0;
-font-family: 'Roboto', sans-serif; 
+font-family: "Press Start 2P", system-ui;
+font-style: normal;
 }
 .welcome-section p.quote {
 font-style: italic;
@@ -392,6 +444,7 @@ padding: 10px;
 }
 
 
+
 /* Card styles */
 .post-card {
 margin-left: 10%;
@@ -416,7 +469,7 @@ padding: 10px;
 }
 /* Image styles */
 .post-image {
-margin-top: 25px;
+margin-top: 15px;
 width: 100px;
 height: 100px;
 object-fit: cover;
@@ -536,92 +589,140 @@ text-decoration: none;
 visibility: hidden;
 }
 
-/* search result end */
-
-/* ################################################## right side table of contents start */
-/* General container styling */
-.container {
-display: flex;
-justify-content: space-between;
-max-width: 1200px;
-margin: 0 auto;
-padding: 20px;
+/* tags */
+.tag-sidebar {
+  margin-top: 2%;
+  width: 400px;
+  background-color: #282828;
+  color: #e5eee5;
+  padding: 20px;
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%); /* Initially off-screen on small screens */
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Main content styling */
-.post-content {
-width: 70%; /* Adjust width of main content */
-padding-right: 20px;
+
+.tag-sidebar h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.post-content h1, .post-content h2, .post-content p {
-margin-bottom: 20px;
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-/* Sidebar (Table of Contents) styling */
-.table-of-contents {
-position: fixed;
-height: 100%;
-top: 5%;
-margin-right: -0.5%;
-right: 10px;
-width: 300px;
-overflow-y: auto;
-background-color: #2b2b2b;
-padding: 15px;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.table-of-contents h3 {
-margin-top: 5%;
-color: #ffffff;
-text-align: center;
-margin-bottom: 15px;
+.tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background-color: #444;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.table-of-contents ul {
-list-style-type: none;
-padding: 0;
+.tag .delete-btn {
+  margin-left: 8px;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
 }
 
-.table-of-contents a {
-display: block;
-color: #c4c4c4;
-text-decoration: none;
-padding: 5px 15px;
-margin: 5px 0;
-border-left: 3px solid transparent;
-transition: color 0.3s ease, border-color 0.3s ease;
+.tag:hover .delete-btn {
+  color: red; /* Highlight delete button on hover */
 }
 
-.table-of-contents a:hover {
-color: white;
+.tag.selected {
+  background-color: #097509;
+  color: black;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.main-content{
+  margin-top: 2%;
+}
+/* TOC */
+/* TOC sidebar styles */
+.toc-section {
+  margin-top: 2%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #2b2b2b;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%); /* Initially off-screen on small screens */
+  transition: transform 0.3s ease-in-out;
 }
 
-.table-of-contents a.active {
-color: white;
-border-left: 3px solid white; /* Highlight active section */
+.toc-section h3 {
+  margin-top: 10%;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-.table-of-contents ul ul {
-padding-left: 20px; /* Indent subsections */
+.toc-section ul {
+  list-style-type: none;
+  padding: 0;
 }
+
+.toc-section a {
+  display: block;
+  color: #c4c4c4;
+  text-decoration: none;
+  padding: 5px 15px;
+  margin: 5px 0;
+  border-left: 3px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.toc-section a:hover {
+  color: white;
+}
+
+.toc-section a.active {
+  color: white;
+  border-left: 3px solid white; /* Highlight active section */
+}
+
+.toc-section ul ul {
+  padding-left: 20px; /* Indent subsections */
+}
+
 .toc-link.active {
-
-color: #fff; /* Highlight text color */
-border-left: 5px solid #fff; /* White stick indicator */
-padding-left: 10px; /* Adjust padding for stick effect */
-transition: background-color 0.3s, color 0.3s;
+  color: #fff;
+  border-left: 5px solid #fff;
+  padding-left: 10px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 section {
-padding: 50px;
-margin: 20px 0;
-border: 1px ;
+  padding: 50px;
+  margin: 20px 0;
+  /* border: 1px solid #ccc; */
 }
 
-/* ################################################## right side table of contents end */
-
+/* search result end */
 /* ###################################################################  General Design End ############################################################# */
 /* ############################## Animation */
 /* Animations */
@@ -651,32 +752,53 @@ to {
 
 /* ####################### smaller smartphones or narrow viewport screens ###########################*/
 @media  screen and (max-width: 480px){
-.search-results{
-  position: fixed;
-  top: 7.9%;
-  left: 10%;
-  width: 80%;
-  height: 90%;
-
-}
-.image-container{
-  margin-top: 10%;
-}
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
-  gap: 1px;
-  padding: 20px;
-}
-.recent-posts {
-  margin-right: -10%;
-  margin-left: -13%;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); 
-  gap: 10px; 
-  row-gap: 2px; 
-  padding: 0px;
-}
+  .toc-main {
+    margin-top: 10%;
+  }
+  .toc-section h3{
+    margin-top: 15%;
+  }
+  
+  .tag-sidebar {
+    margin-top: 10%;
+    width: 80%;
+    transform: translateX(100%); /* Sidebar is hidden by default */
+  }
+  
+  /* Sidebar will slide in when 'open' class is added */
+  .tag-sidebar.open {
+    transform: translateX(0);
+  }
+  .search-results{
+    position: fixed;
+    top: 7.9%;
+    left: 10%;
+    width: 80%;
+    height: 90%;
+  
+  }
+  .searchbar{
+    width: 20%;
+  }
+  .image-container{
+    margin-top: 10%;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    padding: 20px;
+  }
+  .recent-posts {
+    width: 132%;
+    /* margin-right: -19%; */
+    margin-left: -13%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 10px; 
+    row-gap: 2px; 
+    padding: 0px;
+  }
 .sidebar-link {
   font-size: 14px; /* Slightly smaller font size */
   padding: 8px 12px; /* Reduce padding to save space */
@@ -685,10 +807,11 @@ to {
   margin-top: 7%;
 }
 .welcome-title {
-  font-size: 2.5rem; 
+  font-size: 1.5rem; 
 }
 .welcome-section{
-  width: 110%;
+  width: 100%;
+  margin-left: 2%;
   margin-top: 10%;
 }
 .main {
@@ -718,14 +841,15 @@ display: block;
 .sidebar {
   transform: translateX(-100%);
   position: fixed;
-  width: 200px;
+  width: 250px;
 }
 .sidebar.show {
   transform: translateX(0); 
 }
-.sidebar {
-  position: fixed;
-  transform: translateX(-100%);
+.sidebar img{
+
+  margin-left: 0;
+  
 }
 
 /* meun css */
@@ -768,15 +892,45 @@ display: block;
 .menu-icon.open span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
+
+.sidebar img {
+  margin-left: 15%;
+  margin-top: 15%;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  animation: fadeIn 1s ease-in-out;
+  }
 }
   
   
 
 /* ####################### Commonly used for very small screens, such as mobile phones ###########################*/
 @media (min-width:481px) and (max-width: 600px){
-.image-container{
-  margin-top: 10%;
-}
+  .welcome-title {
+    font-size: 1.9rem; 
+  }
+  .searchbar{
+    width: 20%;
+  }
+  section {
+    margin-top: 14%;
+  }
+  .toc-section h3{
+    margin-top: 10%;
+  }
+
+  .tag-sidebar {
+    margin-top: 8%;
+    width: 75%;
+    transform: translateX(100%); /* Sidebar is hidden by default */
+  }
+  
+  /* Sidebar will slide in when 'open' class is added */
+  .tag-sidebar.open {
+    transform: translateX(0);
+  }
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -799,7 +953,7 @@ display: block;
 }
 .welcome-section{
   width: auto;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .main {
   margin-top: 3%;
@@ -828,15 +982,12 @@ display: block;
 .sidebar {
   transform: translateX(-100%);
   position: fixed;
-  width: 200px;
+  width: 250px;
 }
 .sidebar.show {
   transform: translateX(0); 
 }
-.sidebar {
-  position: fixed;
-  transform: translateX(-100%);
-}
+
 
 /* meun css */
 .menu-icon {
@@ -878,14 +1029,42 @@ display: block;
 .menu-icon.open span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
+
+.sidebar img {
+  margin-left: 15%;
+  margin-top: 33%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-bottom: 10%;
+  animation: fadeIn 1s ease-in-out;
+  }
   
 
 }
 /* ####################### This can overlap with phones and some tablets in portrait mode. ###########################*/
 @media (min-width: 601px) and (max-width: 768px){
-.image-container{
-  margin-top: 10%;
-}
+  .welcome-title {
+    font-size: 2.3rem; 
+  }
+  .searchbar{
+    width: 20%;
+  }
+  .toc-main {
+    margin-top: 14%;
+  }
+  .toc-section h3{
+    margin-top: 14%;
+  }
+  .tag-sidebar {
+    margin-top: 7%;
+    transform: translateX(100%); /* Sidebar is hidden by default */
+  }
+  
+  /* Sidebar will slide in when 'open' class is added */
+  .tag-sidebar.open {
+    transform: translateX(0);
+  }
 .search-results{
   position: fixed;
   top: 7.9%;
@@ -912,7 +1091,7 @@ display: block;
 }
 .welcome-section{
   width: auto;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .main {
   margin-top: 3%;
@@ -938,15 +1117,13 @@ display: block;
 .sidebar {
   transform: translateX(-100%);
   position: fixed;
-  width: 200px;
+  width: 250px;
 }
 .sidebar.show {
   transform: translateX(0); 
 }
-.sidebar {
-  position: fixed;
-  transform: translateX(-100%);
-}
+
+
 
 /* meun css */
 .menu-icon {
@@ -989,11 +1166,37 @@ display: block;
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+.sidebar img {
+  margin-left: 15%;
+  margin-top: 33%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-bottom: 10%;
+  animation: fadeIn 1s ease-in-out;
+  }
+
 }
   
     
 /* ####################### Commonly used for tablets and some smaller desktop screens ###########################*/
 @media (min-width: 769px) and (max-width: 1024px){
+  .welcome-title {
+    font-size: 2.2rem; 
+  }
+ 
+  .searchbar{
+    width: 30%;
+  }
+  .sidebar{
+    width: 250px;
+  }
+  .toc-main {
+    margin-top: 1%;
+  }
+  .toc-section h3{
+    margin-top: 14%;
+  }
 
 .grid-container {
   display: grid;
@@ -1022,14 +1225,6 @@ display: block;
 }
 #toggle-news-btn {
   margin-left: 10%;
-  padding: 8px 10px;
-  background-color: #444444;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.logout{
   padding: 8px 10px;
   background-color: #444444;
   color: #fff;
@@ -1081,6 +1276,7 @@ display: block;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease-in-out;
   }
+  
 
 }
  
@@ -1107,7 +1303,7 @@ margin-left: 15%;
 
 } 
 .welcome-section{
-  margin-top: 1%;
+  margin-top: 2%;
   /* margin-right: 8%; */
 } 
 
@@ -1148,7 +1344,7 @@ margin-left: 15%;
   
   } 
   .welcome-section{
-    margin-top: 5%;
+    margin-top: 1%;
     /* margin-right: 8%; */
   } 
   
@@ -1183,9 +1379,7 @@ margin-left: 15%;
   row-gap: 10px; 
   padding: 10px;
 }
-
 .main{
-  width: auto;
   margin-top:1%;
   margin-left: 13%;
 }  
@@ -1230,7 +1424,6 @@ justify-content: center;
 }  
 
 
-
 .news-section {
 margin-top: 2%;
 width: 500px;
@@ -1267,7 +1460,7 @@ transition: transform 0.3s ease-in-out;
 .main{
 width: auto;
 justify-content: center;
-}  
+} 
 
 
 
