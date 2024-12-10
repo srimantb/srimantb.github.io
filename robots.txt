@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://srimantb.github.io/sitemap.xml
