@@ -5,8 +5,6 @@
 // ##################################### ################################################################
 document.addEventListener("DOMContentLoaded", function () {
   const breadcrumbPath = document.getElementById("breadcrumbPath");
-  const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.querySelector(".nav-links");
 
   // Get the current page title
   const pageTitle = document.title.trim(); // e.g., "Blogs"
@@ -30,11 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set the breadcrumb content
   breadcrumbPath.innerHTML = breadcrumbHTML;
-
-  // Toggle the menu on small screens
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
 });
 
 // #######################################################################################################################
@@ -78,7 +71,7 @@ document.body.addEventListener('touchend', (e) => {
 
 // Close the news section if clicked outside
 document.addEventListener('click', (e) => {
-  if (!newsSectionn.contains(e.target) && !e.target.closest('.search-bar')) {
+  if (!newsSectionn.contains(e.target) && !e.target.closest('.searchbar')) {
     newsSectionn.classList.remove('open');
   }
 });
