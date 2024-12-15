@@ -416,7 +416,7 @@ padding: 20px;
 /* Base styling for Welcome Section */
 .welcome-section {
 width: auto;
-background: linear-gradient(to right, #1f1f1f, #333333); 
+background: linear-gradient(#333333); 
 padding: 40px; 
 border-radius: 15px; 
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
@@ -501,10 +501,10 @@ margin-left: 10%;
 margin-right: 15%;
 width: auto;
 display: flex;
-background-color: #2a2a2a;
+/* background-color: #2a2a2a; */
 border-radius: 8px;
 overflow: hidden;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
 transition: transform 0.2s;
 }
 

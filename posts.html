@@ -18,7 +18,7 @@
 <meta http-equiv="expires" content="Thu, 01 Jan 2025 00:00:00 GMT" />
 
 
-  <title>Blogs</title>
+  <title>Posts</title>
   <link rel="icon" type="image/x-icon" href="assets/images/logo.png">  
   <link rel="stylesheet" href="assets/styles/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -51,22 +51,22 @@ header h1 {
 .posts {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   justify-content: left;
   padding: 20px;
 }
 
 /* Individual Post Cards */
 .post {
-  background-color: #2c2b2b; /* Slightly lighter dark for contrast */
+  /* background-color: #2c2b2b;  */
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); */
   width: 300px;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-  position: fixedab;
+  /* position: fixedab; */
 }
 
 /* Post Heading */
@@ -147,8 +147,8 @@ a {
     <a href="/writeup.html" class="nav-link">
       <i class="fas fa-pencil-alt"></i> Writeups
     </a>
-    <a href="/blog.html" class="nav-link">
-      <i class="fas fa-blog"></i> Blogs
+    <a href="/posts.html" class="nav-link">
+      <i class="fas fa-file-alt"></i> Posts
     </a>
     <a href="/note.html" class="nav-link">
       <i class="fas fa-sticky-note"></i> Notes
@@ -206,21 +206,24 @@ a {
         <div class="main-content">
           
             <div class="posts">
-            <a href="/blogs/networking/basicnetworking.html"><div class="post" data-tags="networking,linux">
+              <a href="/posts/linux/linuxBasics.html"><div class="post" data-tags="ctf,tools">
+                <h3>linux Basics</h3>
+                <p>Learn about linux command, file system, networking comands and more..</p>
+            </div></a>
+            <a href="/posts/networking/basicnetworking.html"><div class="post" data-tags="networking,linux">
                 <h3>Basic Networking</h3>
                 <p>This is a blog post about networking fundamentals.</p>
                 <div class="post-date">
                   <i class="fa fa-calendar"></i> 01/04/2022
                 </div>
             </div></a>
-            <div class="post" data-tags="ctf,tools">
-                <h3>Post 2: CTF Challenges</h3>
-                <p>This post discusses various Capture The Flag challenges.</p>
-            </div>
+            
             <div class="post" data-tags="python,reverce engineering">
                 <h3>Post 3: Python for Reverse Engineering</h3>
                 <p>Learn how Python is used in reverse engineering tasks.</p>
             </div>
+      
+          
             </div>
         </div>
 
