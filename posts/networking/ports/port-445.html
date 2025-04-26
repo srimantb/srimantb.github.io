@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="keywords" content="srimant, hacking, networking, python, ctf, writeups, blog, ethical-hacking, cybersecurity">
+  <meta name="author" content="srimant">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="G-Q4RY8PFTJM">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="KOW_MGM-MU4Ole7gOV5JmXS0oAfJY-RaSg0_8jhcwuY" />
+
+ <!-- cache control metatag -->
+ <meta http-equiv="cache-control" content="public, max-age=3600" />
+ <meta http-equiv="expires" content="Thu, 01 Jan 2025 00:00:00 GMT" />
+ 
+
+  <title>Port 445: How Hackers Use SMB to Own Networks</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/logo.png">  
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+
+
+
+  <!-- google analytic tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4RY8PFTJM"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q4RY8PFTJM');
+  </script>
+
+</head>
+<body>
+ 
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="image-container"><img src="/assets/images/logo.png" alt="Your Image"></div>
+    
+    <h1 style="color: #01ff01;">Hack the World
+    </h1>
+    <a href="/index.html" class="nav-link">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="/writeup.html" class="nav-link">
+      <i class="fas fa-pencil-alt"></i> Writeups
+    </a>
+    <a href="/posts.html" class="nav-link">
+      <i class="fas fa-file-alt"></i> Posts
+    </a>
+    <a href="/note.html" class="nav-link">
+      <i class="fas fa-sticky-note"></i> Notes
+    </a>
+    <a href="/about.html" class="nav-link">
+      <i class="fas fa-info-circle"></i> About
+    </a>
+
+  
+
+     <!-- sidebar contact details -->
+      <div class="social-media">
+        <a href="https://github.com/srimantb" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/5rimant" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com/srimantk666" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:srimant.work@example.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+
+
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Main Content -->
+  <div>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="menu-icon" id="menu-icon" onclick="toggleSidebar()" >
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+      
+      
+      <div id="breadcrumbPath" class="breadcrumb"></div>
+      
+      
+      <button id="toggle-toc-btn"><i class="fa fa-bars"></i></button>
+
+      <!-- <input class="searchbar" type="text" id="searchBar" placeholder="Search..." onkeyup="searchArticles()" onclick="searchArticles()"> -->
+    </div>
+    <div class="search-results" id="searchResults" style="display: none;">
+      <!-- Cards will be generated dynamically here -->
+    </div>
+   
+
+  
+
+    
+    <div class="main">
+                    <!-- TOC Section -->
+  <div class="toc-section" id="tocSection">
+    <h3>Table of Contents</h3>
+    <ul>
+      <li><a href="#section1" class="toc-link">What is Port 445</a></li>
+      <li><a href="#section2" class="toc-link">Why Hackers Are Interested</a></li>
+      <li><a href="#section3" class="toc-link">Common Attacks</a></li>
+      <li><a href="#section4" class="toc-link">Tools Used to Exploit</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="toc-main">
+    <section id="section1">
+      <h2>🔍 What is Port 445? </h2>
+      <p><ul>
+        <li>Protocol: TCP</li>
+        <li>Used for: Microsoft SMB (Server Message Block) over TCP</li>
+        <li>Purpose: File sharing, printer sharing, remote access, network browsing, etc.</li>
+      </ul></p>
+      Since Windows 2000, SMB runs directly over TCP (port 445) without using NetBIOS (which used ports 137-139).
+    </section>
+
+    <section id="section2">
+      <h2>🧠 Why Hackers Are Interested in Port 445</h2>
+      <p><ol>
+        <li>SMB is Powerful</li>
+        SMB allows file sharing, remote command execution, and printer access — perfect for attackers to move laterally in a network or exfiltrate data.
+        <li>Commonly Exposed</li>
+        Insecure systems often expose port 445 to the internet — a huge risk.
+        <li>Vulnerabilities and Exploits</li>
+        <ul><li>EternalBlue (MS17-010) – Used in WannaCry, NotPetya ransomware attacks.</li>
+            <li>SMBGhost (CVE-2020-0796) – RCE vulnerability in SMBv3 (Windows 10, Server 2019).</li>
+            <li>Relaying attacks – NTLM hashes can be captured and relayed to authenticate without knowing passwords.</li></ul>
+      </ol></p>
+    </section>
+
+    <section id="section3">
+      <h2>💥 Common Attacks Using Port 445</h2>
+        <p><table style="width: 80%; margin: 20px auto; border-collapse: collapse; color: #20e220; font-family: 'Courier New', monospace; font-size: 16px; ">
+            <tr>
+                <th style="padding: 12px; border: 1px solid #00ff00;">Attack Type</th>
+                <th style="padding: 12px; border: 1px solid #00ff00;">Description</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #00ff00;">EternalBlue</td>
+                <td style="padding: 10px; border: 1px solid #00ff00;">Exploits a buffer overflow to execute code remotely (RCE)</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #00ff00;">SMB Relay	</td>
+                <td style="padding: 10px; border: 1px solid #00ff00;">	Captures authentication attempts and relays them to another server to gain access</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #00ff00;">Pass-the-Hash</td>
+                <td style="padding: 10px; border: 1px solid #00ff00;">Uses captured NTLM hash instead of password</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #00ff00;">Anonymous Enumeration</td>
+                <td style="padding: 10px; border: 1px solid #00ff00;">List shared drives, users, and policies via SMB</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #00ff00;">SMB Signing Disabled</td>
+                <td style="padding: 10px; border: 1px solid #00ff00;">Man-in-the-middle attacks are possible if signing is off</td>
+            </tr>
+         
+        </table>
+    </p>
+    </section>
+    <section id="section4"> 
+        <h2>🛠 Tools Used to Exploit Port 445</h2>
+        <p>
+            <table style="width: 80%; margin: 20px auto; border-collapse: collapse; color: #20e220; font-family: 'Courier New', monospace; font-size: 16px; ">
+                <tr>
+                    <th style="padding: 12px; border: 1px solid #00ff00;">Tool</th>
+                    <th style="padding: 12px; border: 1px solid #00ff00;">Purpose</th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">Metasploit</td>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">Modules for EternalBlue, SMB relay, etc.
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">Impacket</td>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">	smbclient.py, wmiexec.py, secretsdump.py
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">Nmap</td>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">SMB scripts like smb-enum-shares, smb-vuln*
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">Responder</td>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">Poison network requests to capture credentials
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">CrackMapExec (CME)</td>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">Swiss army knife for SMB
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">SMBClient</td>
+                    <td style="padding: 10px; border: 1px solid #00ff00;">To connect and interact with shares
+                    </td>
+                </tr>
+            </table>
+        </p>
+    </section>
+  </main>
+
+
+    </div>
+  
+  
+    <script>
+    
+      const toggleTOCBtn = document.getElementById("toggle-toc-btn");
+      const tocSection = document.getElementById("tocSection");
+      
+      toggleTOCBtn.addEventListener("click", () => {
+        tocSection.classList.toggle("hidden");
+        if (tocSection.classList.contains("hidden")) {
+          tocSection.style.transform = "translateX(0)"; // Hide sidebar
+        } else {
+          tocSection.style.transform = "translateX(100%)"; // Show sidebar
+        }
+      });
+      
+      // Intersection Observer for active TOC link highlighting
+      // toc
+      document.addEventListener("DOMContentLoaded", () => {
+        const tocLinks = document.querySelectorAll(".toc-link");
+        const sections = document.querySelectorAll("section");
+      
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const tocLink = document.querySelector(
+                `.toc-link[href="#${entry.target.id}"]`
+              );
+      
+              if (entry.isIntersecting) {
+                tocLinks.forEach((link) => link.classList.remove("active"));
+                tocLink.classList.add("active");
+              }
+            });
+          },
+          { root: null, threshold: 0.6 }
+        );
+      
+        sections.forEach((section) => observer.observe(section));
+      
+        tocLinks.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          });
+        });
+      });</script>
+    <script src="/assets/scripts/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  </body>
+  </html>

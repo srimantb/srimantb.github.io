@@ -101,7 +101,9 @@ cursor: pointer;
   justify-content: left;
 }
 .breadcrumb{
-  justify-content:space-between
+  justify-content:space-between;
+  margin-left: 10%;
+  
 }
 
 /* beadcrumbs */
