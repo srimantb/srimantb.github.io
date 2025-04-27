@@ -145,67 +145,72 @@
    
     <!-- Content Area -->
     <div class="main">
-      <div class="welcome-section">
-        <h2 id="welcomeMessage" class="welcome-title">Hey' Welcome!<span style="display: none;">to Srimant's Website</span></h2>
-        <p>Here you can explore, learn, and dominate the cyber world.</p>
-        <div class="divider"></div>
-        <p >“The quieter you become, the more you are able to hear.”</p> <!--class="quote" add to change quote-->
+      <header>
+  <!-- Srimant B | Hacker World -->
+  <div id="typing"></div>
+</header>
+
+<main>
+  <div class="section-title">Recent Posts</div>
+
+  <div class="card">
+    <div class="card-text">
+      <div class="card-title">Linux Hacking Basics</div>
+      <div class="card-desc">A beginner's guide to exploiting Linux environments and getting your first shell.</div>
     </div>
-    
-    
-      <!-- #############################   recent POst -->
-  <br><h2 style="color: #00FA9A;">Recent Posts</h2>
-  <div class="grid-container">
-  <div class="recent-posts">
-    <!-- Card 1 -->
-    <div class="post-card">
-      <img src="/assets/images/linux.png" alt="Hacky Easter 2023" class="post-image" />
-      <div class="post-content">
-        <h3 class="post-title">Linux Hacking Basics</h3>
-        <p class="post-description">
-          A beginner's guide to hacking in Linux.
-        </p>
-        <div class="post-date">
-          <i class="fa fa-calendar"></i> 1/12/2024
-        </div>
-      </div>
-    </div>
-  
-    <!-- Card 2 -->
-    <div class="post-card">
-      <img src="/assets/images/linux.png" alt="Hackvent 2022" class="post-image" />
-      <div class="post-content">
-        <h3 class="post-title">Top Tools for Linux Hacking</h3>
-        <p class="post-description">
-          List of essential tools for Linux hacking.
-        </p>
-        <div class="post-date">
-          <i class="fa fa-calendar"></i> 19/11/2024
-        </div>
-      </div>
-    </div>
-  
-    <!-- Card 3 -->
-    <div class="post-card">
-      <img src="/assets/images/windows.png" alt="Hacky Easter 2022" class="post-image" />
-      <div class="post-content">
-        <h3 class="post-title">Advanced windows Hacking Techniques</h3>
-        <p class="post-description">
-          The annual Hacky Easter Event from Hacking-Lab.
-        </p>
-        <div class="post-date">
-          <i class="fa fa-calendar"></i> 01/04/2022
-        </div>
-      </div>
+    <div class="card-img">
+      <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=Linux" alt="Linux Hacking">
     </div>
   </div>
-  </div>
-  <!-- #############################   recent post end -->
 
+  <div class="card">
+    <div class="card-text">
+      <div class="card-title">Top CTF Tools for Beginners</div>
+      <div class="card-desc">Collection of essential tools every CTF player should know.</div>
     </div>
-
+    <div class="card-img">
+      <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=CTF" alt="CTF Tools">
+    </div>
   </div>
 
+  <div class="card">
+    <div class="card-text">
+      <div class="card-title">SQL Injection Tricks</div>
+      <div class="card-desc">Learn advanced SQLi payloads and bypass techniques for modern WAFs.</div>
+    </div>
+    <div class="card-img">
+      <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=SQLi" alt="SQL Injection">
+    </div>
+  </div>
+
+  <div class="section-title">Latest Tools</div>
+
+  <div class="card">
+    <div class="card-text">
+      <div class="card-title">Payload Generator</div>
+      <div class="card-desc">Custom payload builder to evade antiviruses and EDRs.</div>
+    </div>
+    <div class="card-img">
+      <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=Payload" alt="Payload">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-text">
+      <div class="card-title">Simple Port Scanner</div>
+      <div class="card-desc">A lightweight and fast port scanner built for initial recon.</div>
+    </div>
+    <div class="card-img">
+      <img src="/assets/images/linux.png" alt="Port Scanner">
+    </div>
+  </div>
+</main>
+
+
+  </div>
+  <div class="quote">
+    "The quieter you become, the more you are able to hear."
+  </div>
   
   
   
@@ -256,6 +261,58 @@
    </div>
 
   </div>
+
+  <script>
+// Typing Effect
+const words = ["Hacker", "Explorer", "CTF Player"];
+let i = 0;
+let timer;
+function typingEffect() {
+  let word = words[i].split("");
+  let loopTyping = function() {
+    if (word.length > 0) {
+      document.getElementById('typing').innerHTML += word.shift();
+    } else {
+      deletingEffect();
+      return;
+    }
+    timer = setTimeout(loopTyping, 200);
+  };
+  loopTyping();
+}
+
+function deletingEffect() {
+  let word = words[i].split("");
+  let loopDeleting = function() {
+    if (word.length > 0) {
+      word.pop();
+      document.getElementById('typing').innerHTML = word.join("");
+    } else {
+      i = (i + 1) % words.length;
+      typingEffect();
+      return;
+    }
+    timer = setTimeout(loopDeleting, 100);
+  };
+  setTimeout(loopDeleting, 1000);
+}
+
+typingEffect();
+
+// Fade In on Scroll
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+cards.forEach(card => {
+  observer.observe(card);
+});
+</script>
+
 
   <script src="assets/scripts/app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

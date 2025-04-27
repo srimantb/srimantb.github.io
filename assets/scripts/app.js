@@ -1,7 +1,30 @@
  // ################## date and time ##################
  // Function to get current date 
 // ################## date and time End ##################
+function toggleSidebar() {
+  document.body.classList.toggle('sidebar-hidden');
+}
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('show');
 
+  if (sidebar.classList.contains('show')) {
+    document.addEventListener('click', handleOutsideClick);
+  } else {
+    document.removeEventListener('click', handleOutsideClick);
+  }
+}
+
+// Detect outside clicks
+function handleOutsideClick(event) {
+  const sidebar = document.querySelector('.sidebar');
+  const menuIcon = document.getElementById('menu-icon');
+
+  if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+    sidebar.classList.remove('show');
+    document.removeEventListener('click', handleOutsideClick);
+  }
+}
 // ##################################### ################################################################
 document.addEventListener("DOMContentLoaded", function () {
   const breadcrumbPath = document.getElementById("breadcrumbPath");

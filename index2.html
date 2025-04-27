@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hack the World</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #00ff00;
+      font-family: 'Press Start 2P', monospace;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .hacker-header h1 {
+      font-size: 18px;
+      color: #00ff00;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid #00ff00;
+      padding-left: 10px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background: #121212;
+      margin: 10px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #00ff00;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card-text {
+      padding: 15px;
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #00ff00;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .card-img {
+      flex-shrink: 0;
+    }
+
+    .card-img img {
+      width: 150px;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .card-img img {
+        width: 80%;
+        margin: 10px 0;
+      }
+    }
+
+    .quote {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #888;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hacker Animation Header -->
+  <header class="hacker-header">
+    <h1 id="hacker-animation"></h1>
+  </header>
+
+  <main>
+    <div class="section-title">Recent Posts</div>
+
+    <div class="card">
+      <div class="card-text">
+        <div class="card-title">Linux Hacking Basics</div>
+        <div class="card-desc">A beginner's guide to exploiting Linux environments and getting your first shell.</div>
+      </div>
+      <div class="card-img">
+        <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=Linux" alt="Linux Hacking">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-text">
+        <div class="card-title">Top CTF Tools for Beginners</div>
+        <div class="card-desc">Collection of essential tools every CTF player should know.</div>
+      </div>
+      <div class="card-img">
+        <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=CTF" alt="CTF Tools">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-text">
+        <div class="card-title">SQL Injection Tricks</div>
+        <div class="card-desc">Learn advanced SQLi payloads and bypass techniques for modern WAFs.</div>
+      </div>
+      <div class="card-img">
+        <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=SQLi" alt="SQL Injection">
+      </div>
+    </div>
+
+    <div class="section-title">Latest Tools</div>
+
+    <div class="card">
+      <div class="card-text">
+        <div class="card-title">Payload Generator</div>
+        <div class="card-desc">Custom payload builder to evade antiviruses and EDRs.</div>
+      </div>
+      <div class="card-img">
+        <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=Payload" alt="Payload">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-text">
+        <div class="card-title">Simple Port Scanner</div>
+        <div class="card-desc">A lightweight and fast port scanner built for initial recon.</div>
+      </div>
+      <div class="card-img">
+        <img src="https://via.placeholder.com/150/00ff99/0d0d0d?text=Scanner" alt="Port Scanner">
+      </div>
+    </div>
+
+  </main>
+
+  <div class="quote">
+    "The quieter you become, the more you are able to hear."
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const hackerText = "Hack the World";
+    let hackerIndex = 0;
+    function hackerEffect() {
+      if (hackerIndex < hackerText.length) {
+        document.getElementById("hacker-animation").innerHTML += hackerText.charAt(hackerIndex);
+        hackerIndex++;
+        setTimeout(hackerEffect, 100);
+      } else {
+        setTimeout(() => {
+          document.getElementById("hacker-animation").innerHTML = "";
+          hackerIndex = 0;
+          hackerEffect();
+        }, 2000);
+      }
+    }
+    hackerEffect();
+  </script>
+
+</body>
+</html>
