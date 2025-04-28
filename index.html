@@ -265,56 +265,66 @@
   </div>
 
   <script>
-// Typing Effect
-const words = ["Hacker", "Explorer", "CTF Player"];
-let i = 0;
-let timer;
-function typingEffect() {
-  let word = words[i].split("");
-  let loopTyping = function() {
-    if (word.length > 0) {
-      document.getElementById('typing').innerHTML += word.shift();
-    } else {
-      deletingEffect();
-      return;
+    // Typing Effect
+
+const lines = [
+    "Hey, Welcome!",
+    "Just Sharing 🧠",
+    "Networking Notes 🌐",
+    "CTF Attempts 🕵️",
+    "Hacking Fun 🚀",
+    "Tools I Found 🛠️",
+    "Random Learnings 📚",
+    "Linux 🐧 Tricks"
+];
+    
+    let lineIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let timer;
+    
+    function typeLine() {
+        const typingElement = document.getElementById('typing');
+        const currentLine = lines[lineIndex];
+        let displayedText = currentLine.substring(0, charIndex);
+    
+        typingElement.innerHTML = displayedText;
+    
+        if (!isDeleting && charIndex < currentLine.length) {
+            charIndex++;
+            timer = setTimeout(typeLine, 100); // Typing speed
+        } else if (isDeleting && charIndex > 0) {
+            charIndex--;
+            timer = setTimeout(typeLine, 50); // Deleting speed (faster)
+        } else {
+            if (!isDeleting) {
+                isDeleting = true;
+                timer = setTimeout(typeLine, 1000); // Pause before deleting
+            } else {
+                isDeleting = false;
+                lineIndex = (lineIndex + 1) % lines.length;
+                timer = setTimeout(typeLine, 500); // Pause before typing next
+            }
+        }
     }
-    timer = setTimeout(loopTyping, 200);
-  };
-  loopTyping();
-}
-
-function deletingEffect() {
-  let word = words[i].split("");
-  let loopDeleting = function() {
-    if (word.length > 0) {
-      word.pop();
-      document.getElementById('typing').innerHTML = word.join("");
-    } else {
-      i = (i + 1) % words.length;
-      typingEffect();
-      return;
-    }
-    timer = setTimeout(loopDeleting, 100);
-  };
-  setTimeout(loopDeleting, 1000);
-}
-
-typingEffect();
-
-// Fade In on Scroll
-const cards = document.querySelectorAll('.card');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-});
-cards.forEach(card => {
-  observer.observe(card);
-});
-</script>
-
+    
+    // Start the typing effect
+    typeLine();
+    
+    // Card Animation (keep as you have)
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+    </script>
+    
 
   <script src="assets/scripts/app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

@@ -17,6 +17,17 @@ body {
   /* font-family: Arial, sans-serif; */
   line-height: 1.6;
 }
+.quote {
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* height: 100vh; */
+  /* width: 100%; */
+  padding: 20px;
+  box-sizing: border-box;
+}
 
 /* Layout Containers */
 .container { 
@@ -322,13 +333,17 @@ header {
   overflow: hidden;
 }
 #typing {
-  font-size: 0.5em;
+  font-size: 0.5em; /* Bigger font for big screens, later will adjust */
   color: #00ffaa;
   margin-top: 10px;
-  /* margin-bottom: 20px; */
-  height: 1.6m;
+  min-height: 2em; /* Stable height */
   overflow: hidden;
+  white-space: nowrap; /* IMPORTANT: Don't allow text wrap */
+  /* border-right: 2px solid #00ffaa; */
+  animation: blink-caret 0.7s step-end infinite;
+  width: 100%;
 }
+
 main {
   padding: 30px;
   max-width: 1000px;
@@ -394,12 +409,19 @@ main {
     flex-direction: column;
   }
   .quote {
+    font-size: smaller;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-top: 40px;
-    font-size: 12px;
-    color: #888;
-    padding: 10px;
+    /* height: 100vh; */
+    /* width: 100%; */
+    padding: 20px;
+    box-sizing: border-box;
   }
+  
+
+  
   
 }
 
@@ -789,10 +811,13 @@ to {
   #typing {
     font-size: 0.5em;
     color: #00ffaa;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
     height: 1.6em;
     overflow: hidden;
+    min-height: 2em;
+    text-wrap-mode: wrap;
+    
   }
   .toc-main {
     margin-left: -20%;
