@@ -263,53 +263,29 @@
    </div>
 
   </div>
+<script>
+  function showSection(section) {
+    document.getElementById('recent-posts').style.display = section === 'recent' ? 'block' : 'none';
+    document.getElementById('latest-tools').style.display = section === 'tools' ? 'block' : 'none';
+  }
+
+  // Hashtag filter logic
+  const hashtagButtons = document.querySelectorAll('.hashtag-btn');
+  const articles = document.querySelectorAll('.article');
+
+  hashtagButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tag = button.dataset.tag.toLowerCase();
+      articles.forEach(article => {
+        const tags = article.dataset.tags.toLowerCase();
+        article.style.display = tags.includes(tag) ? 'block' : 'none';
+      });
+    });
+  });
+</script>
 
   <script>
     // Typing Effect
-
-const lines = [
-    "Hey, Welcome!",
-    "Just Sharing 🧠",
-    "Networking Notes 🌐",
-    "CTF Attempts 🕵️",
-    "Hacking Fun 🚀",
-    "Tools I Found 🛠️",
-    "Random Learnings 📚",
-    "Linux 🐧 Tricks"
-];
-    
-    let lineIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let timer;
-    
-    function typeLine() {
-        const typingElement = document.getElementById('typing');
-        const currentLine = lines[lineIndex];
-        let displayedText = currentLine.substring(0, charIndex);
-    
-        typingElement.innerHTML = displayedText;
-    
-        if (!isDeleting && charIndex < currentLine.length) {
-            charIndex++;
-            timer = setTimeout(typeLine, 100); // Typing speed
-        } else if (isDeleting && charIndex > 0) {
-            charIndex--;
-            timer = setTimeout(typeLine, 50); // Deleting speed (faster)
-        } else {
-            if (!isDeleting) {
-                isDeleting = true;
-                timer = setTimeout(typeLine, 1000); // Pause before deleting
-            } else {
-                isDeleting = false;
-                lineIndex = (lineIndex + 1) % lines.length;
-                timer = setTimeout(typeLine, 500); // Pause before typing next
-            }
-        }
-    }
-    
-    // Start the typing effect
-    typeLine();
     
     // Card Animation (keep as you have)
     const cards = document.querySelectorAll('.card');

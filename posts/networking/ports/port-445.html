@@ -155,30 +155,31 @@
 
     <section id="section3">
       <h2>💥 Common Attacks Using Port 445</h2>
-        <p><table style="width: 80%; margin: 20px auto; border-collapse: collapse; color: #20e220; font-family: 'Courier New', monospace; font-size: 16px; ">
+        <p><table class="styled-table ">
+
             <tr>
-                <th style="padding: 12px; border: 1px solid #00ff00;">Attack Type</th>
-                <th style="padding: 12px; border: 1px solid #00ff00;">Description</th>
+                <th >Attack Type</th>
+                <th >Description</th>
             </tr>
             <tr>
-                <td style="padding: 10px; border: 1px solid #00ff00;">EternalBlue</td>
-                <td style="padding: 10px; border: 1px solid #00ff00;">Exploits a buffer overflow to execute code remotely (RCE)</td>
+                <td>EternalBlue</td>
+                <td>Exploits a buffer overflow to execute code remotely (RCE)</td>
             </tr>
             <tr>
-                <td style="padding: 10px; border: 1px solid #00ff00;">SMB Relay	</td>
-                <td style="padding: 10px; border: 1px solid #00ff00;">	Captures authentication attempts and relays them to another server to gain access</td>
+                <td>SMB Relay	</td>
+                <td>	Captures authentication attempts and relays them to another server to gain access</td>
             </tr>
             <tr>
-                <td style="padding: 10px; border: 1px solid #00ff00;">Pass-the-Hash</td>
-                <td style="padding: 10px; border: 1px solid #00ff00;">Uses captured NTLM hash instead of password</td>
+                <td>Pass-the-Hash</td>
+                <td>Uses captured NTLM hash instead of password</td>
             </tr>
             <tr>
-                <td style="padding: 10px; border: 1px solid #00ff00;">Anonymous Enumeration</td>
-                <td style="padding: 10px; border: 1px solid #00ff00;">List shared drives, users, and policies via SMB</td>
+                <td>Anonymous Enumeration</td>
+                <td>List shared drives, users, and policies via SMB</td>
             </tr>
             <tr>
-                <td style="padding: 10px; border: 1px solid #00ff00;">SMB Signing Disabled</td>
-                <td style="padding: 10px; border: 1px solid #00ff00;">Man-in-the-middle attacks are possible if signing is off</td>
+                <td>SMB Signing Disabled</td>
+                <td>Man-in-the-middle attacks are possible if signing is off</td>
             </tr>
          
         </table>
@@ -187,39 +188,40 @@
     <section id="section4"> 
         <h2>🛠 Tools Used to Exploit Port 445</h2>
         <p>
-            <table style="width: 80%; margin: 20px auto; border-collapse: collapse; color: #20e220; font-family: 'Courier New', monospace; font-size: 16px; ">
+          <table class="styled-table">
+
                 <tr>
-                    <th style="padding: 12px; border: 1px solid #00ff00;">Tool</th>
-                    <th style="padding: 12px; border: 1px solid #00ff00;">Purpose</th>
+                    <th >Tool</th>
+                    <th >Purpose</th>
                 </tr>
                 <tr>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">Metasploit</td>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">Modules for EternalBlue, SMB relay, etc.
+                    <td>Metasploit</td>
+                    <td>Modules for EternalBlue, SMB relay, etc.
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">Impacket</td>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">	smbclient.py, wmiexec.py, secretsdump.py
+                    <td>Impacket</td>
+                    <td>	smbclient.py, wmiexec.py, secretsdump.py
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">Nmap</td>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">SMB scripts like smb-enum-shares, smb-vuln*
+                    <td>Nmap</td>
+                    <td>SMB scripts like smb-enum-shares, smb-vuln*
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">Responder</td>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">Poison network requests to capture credentials
+                    <td>Responder</td>
+                    <td>Poison network requests to capture credentials
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">CrackMapExec (CME)</td>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">Swiss army knife for SMB
+                    <td>CrackMapExec (CME)</td>
+                    <td>Swiss army knife for SMB
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">SMBClient</td>
-                    <td style="padding: 10px; border: 1px solid #00ff00;">To connect and interact with shares
+                    <td>SMBClient</td>
+                    <td>To connect and interact with shares
                     </td>
                 </tr>
             </table>

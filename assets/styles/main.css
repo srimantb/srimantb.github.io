@@ -17,6 +17,7 @@ body {
   /* font-family: Arial, sans-serif; */
   line-height: 1.6;
 }
+
 .quote {
   font-size: small;
   display: flex;
@@ -333,10 +334,10 @@ header {
   overflow: hidden;
 }
 #typing {
-  font-size: 0.5em; /* Bigger font for big screens, later will adjust */
+
   color: #00ffaa;
-  margin-top: 10px;
-  min-height: 2em; /* Stable height */
+  /* margin-top: -3%; */
+  min-height: 1.5em; /* Stable height */
   overflow: hidden;
   white-space: nowrap; /* IMPORTANT: Don't allow text wrap */
   /* border-right: 2px solid #00ffaa; */
@@ -357,6 +358,31 @@ main {
   border-left: 5px solid #00ff99;
   padding-left: 10px;
 
+}
+
+section h2{
+  color: #00ff99;
+}
+section ul {
+  color: #0dc40d;
+}
+section{
+  color: #0dc40d;
+}
+.styled-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  color: #0dc40d;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+}
+
+/* Optional: cell padding & borders */
+.styled-table th,
+.styled-table td {
+  padding: 12px;
+  border: 1px solid #118511;
 }
 .card {
   background: #1a1a1a;
@@ -548,7 +574,7 @@ text-decoration: none;
 /* Main Content */
 .main{
 /* width:auto; */
-margin-top: 3%;
+/* margin-top: 3%; */
 margin-left: 250px;
 padding: 20px;
 overflow: hidden;
