@@ -18,6 +18,110 @@ body {
   line-height: 1.6;
 }
 
+.terminal-wrapper {
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-header {
+  background-color: #1a1a1a;
+  color: #33ff33;
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 10px;
+  border-bottom: 1px solid #333;
+}
+
+.copy-btn {
+  background-color: #222;
+  color: #33ff33;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+  background-color: #444;
+}
+
+.terminal-text {
+  color: #33ff33;
+  padding: 10px 15px;
+  white-space: pre-wrap;
+}
+.note-box {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+
+.note-line {
+  width: 4px;
+  background-color: #888;
+  border-radius: 2px;
+  margin-right: 12px; /* adds space between line and text */
+  animation: growLine 0.6s ease-out;
+}
+
+/* .note-content {
+  background-color: #1e1e1e;
+  padding: 10px;
+  border-radius: 4px;
+  color: #eee;
+  font-family: sans-serif;
+  max-width: 600px;
+} */
+.explanation-box {
+  border-left: 4px solid #888;     /* This is the "stick" on the left */
+  padding-left: 16px;              /* Space between stick and text */
+  margin-left: 10px;               /* Optional: shifts the whole block to the right */
+  color: #eee;
+  background-color: #1e1e1e;
+  font-family: sans-serif;
+  border-radius: 4px;
+  max-width: 600px;
+}
+
+
+@keyframes growLine {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.responsive-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.glow {
+  display: inline-block;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-family: monospace;
+  animation: glowPulse 1.5s infinite;
+}
+
 .quote {
   font-size: small;
   display: flex;

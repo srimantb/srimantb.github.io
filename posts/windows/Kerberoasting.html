@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="keywords" content="srimant, hacking, networking, python, ctf, writeups, blog, ethical-hacking, cybersecurity">
+  <meta name="author" content="srimant">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="G-Q4RY8PFTJM">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="KOW_MGM-MU4Ole7gOV5JmXS0oAfJY-RaSg0_8jhcwuY" />
+
+ <!-- cache control metatag -->
+ <meta http-equiv="cache-control" content="public, max-age=3600" />
+ <meta http-equiv="expires" content="Thu, 01 Jan 2025 00:00:00 GMT" />
+ 
+
+  <title>Kerberoasting Attack Explained – Step by Step</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/logo.png">  
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+
+
+
+  <!-- google analytic tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4RY8PFTJM"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q4RY8PFTJM');
+  </script>
+
+</head>
+<body>
+ 
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="image-container"><img src="/assets/images/logo.png" alt="Your Image"></div>
+    
+    <h1 style="color: #01ff01;">Hack the World
+    </h1>
+    <a href="/index.html" class="nav-link">
+      <i class="fas fa-home"></i> Home
+    </a>
+    <a href="/writeup.html" class="nav-link">
+      <i class="fas fa-pencil-alt"></i> Writeups
+    </a>
+    <a href="/posts.html" class="nav-link">
+      <i class="fas fa-file-alt"></i> Posts
+    </a>
+    <a href="/note.html" class="nav-link">
+      <i class="fas fa-sticky-note"></i> Notes
+    </a>
+    <a href="/about.html" class="nav-link">
+      <i class="fas fa-info-circle"></i> About
+    </a>
+
+  
+
+     <!-- sidebar contact details -->
+      <div class="social-media">
+        <a href="https://github.com/srimantb" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/5rimant" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com/srimantk666" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:srimant.work@example.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+
+
+  </div>
+  <div class="overlay"></div>
+
+  <!-- Main Content -->
+  <div>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="menu-icon" id="menu-icon" onclick="toggleSidebar()" >
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+      
+      
+      <div id="breadcrumbPath" class="breadcrumb"></div>
+      
+      
+      <button id="toggle-toc-btn"><i class="fa fa-bars"></i></button>
+
+      <!-- <input class="searchbar" type="text" id="searchBar" placeholder="Search..." onkeyup="searchArticles()" onclick="searchArticles()"> -->
+    </div>
+    <div class="search-results" id="searchResults" style="display: none;">
+      <!-- Cards will be generated dynamically here -->
+    </div>
+   
+
+  
+
+    
+    <div class="main">
+                    <!-- TOC Section -->
+  <div class="toc-section" id="tocSection">
+    <h3>Table of Contents</h3>
+    <ul>
+      <li><a href="#section1" class="toc-link">What is Kerberoasting</a></li>
+      <li><a href="#section2" class="toc-link">Tools You Need</a></li>
+      <li><a href="#section3" class="toc-link">Step-by-Step Kerberoasting</a></li>
+      <li><a href="#section4" class="toc-link">Tools Used to Exploit</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="toc-main">
+    <section id="section1">
+      <h2>What is Kerberoasting Attack..?</h2>
+      <p>Kerberoasting is a powerful post-exploitation technique used in Active Directory environments to 
+        retrieve service account credentials without needing elevated privileges. 
+        It’s commonly used by red teamers and penetration testers to escalate privileges laterally across a network.</p>
+        <img width="100%" src="https://cymulate.com/uploaded-files/2024/12/Kerberoasting_diagram.png" alt="">
+     <p>
+        In short, Kerberoasting takes advantage of how Kerberos authentication works in Windows networks. 
+        When a user requests access to a service (like MSSQL or HTTP), 
+        the domain controller issues a Service Ticket (TGS) encrypted with the service account's password hash.
+        If an attacker can request this ticket, they can crack it offline to recover the plaintext password — especially if it’s weak.
+     </p>
+      
+    </section>
+
+    <section id="section2">
+      <h2>🧰 Tools You Need</h2>
+      <p><ul>
+        <li><a href="https://github.com/fortra/impacket" target="_blank">Impacket</a></li>
+        <li>Hashcat</li>
+        <li><a href="https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt">Wordlists</a> (like rockyou.txt)</li>
+        </ul>
+    </p>
+    </section>
+
+    <section id="section3">
+      <h2 >Step-by-Step Kerberoasting </h2>
+      <h3>Step 1: Enumerate SPNs and Request TGS</h3>
+        <p>Use Impacket’s GetUserSPNs.py to list service accounts with SPNs and request tickets.</p>
+        <div class="terminal-wrapper">
+            <div class="terminal-header">
+              <button class="copy-btn" onclick="copyToClipboard('terminal1', this)">Copy</button>
+            </div>
+            <div class="terminal-text" id="terminal1">python3 GetUserSPNs.py -request -dc-ip 10.10.10.10 active.htb/svc_tags</div>
+        </div>
+        <p>You’ll be prompted for the password of svc_tags.</p>
+        <div class="note-box">
+            <div class="note-line"></div>
+            <div class="explanation-box">
+              <strong>Explanation:</strong> This pulls down encrypted service tickets (TGS) for accounts with SPNs. These tickets are encrypted with the target user’s NTLM hash.
+            </div>
+          </div>
+        <img class="responsive-img" src="https://files.catbox.moe/3jifaz.png" alt="catching the hash">
+        <p>Save this hash to a file (hashes.txt).</p>
+
+        <h3>Step 2: Crack the Hash Offline</h3>
+        <p>Use hashcat to attempt cracking the TGS ticket:</p>
+        <div class="terminal-wrapper">
+            <div class="terminal-header">
+              <button class="copy-btn" onclick="copyToClipboard('terminal2', this)">Copy</button>
+            </div>
+            <div class="terminal-text" id="terminal2">hashcat -m 13100 hashes.txt /usr/share/wordlists/rockyou.txt --force</div>
+        </div>
+        <img class="responsive-img" src="https://files.catbox.moe/e557qi.png" alt="hashcat tgs ticket cracking">
+        <div class="note-box">
+            <div class="note-line"></div>
+            <div class="explanation-box">
+                <span class="glow">-m 13100</span> is the hash mode for Kerberos 5 TGS-REP etype 23 (RC4-HMAC).
+            </div>
+          </div><br>
+          <p>If successful, you’ll retrieve the plaintext password of the service account.</p>
+    </section>
+
+    
+  </main>
+
+
+    </div>
+  
+  
+    <script>
+    
+      const toggleTOCBtn = document.getElementById("toggle-toc-btn");
+      const tocSection = document.getElementById("tocSection");
+      
+      toggleTOCBtn.addEventListener("click", () => {
+        tocSection.classList.toggle("hidden");
+        if (tocSection.classList.contains("hidden")) {
+          tocSection.style.transform = "translateX(0)"; // Hide sidebar
+        } else {
+          tocSection.style.transform = "translateX(100%)"; // Show sidebar
+        }
+      });
+      
+      // Intersection Observer for active TOC link highlighting
+      // toc
+      document.addEventListener("DOMContentLoaded", () => {
+        const tocLinks = document.querySelectorAll(".toc-link");
+        const sections = document.querySelectorAll("section");
+      
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const tocLink = document.querySelector(
+                `.toc-link[href="#${entry.target.id}"]`
+              );
+      
+              if (entry.isIntersecting) {
+                tocLinks.forEach((link) => link.classList.remove("active"));
+                tocLink.classList.add("active");
+              }
+            });
+          },
+          { root: null, threshold: 0.6 }
+        );
+      
+        sections.forEach((section) => observer.observe(section));
+      
+        tocLinks.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          });
+        });
+      });</script>
+    <script src="/assets/scripts/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  </body>
+  </html>

@@ -15,6 +15,20 @@ function toggleSidebar() {
   }
 }
 
+function copyToClipboard(id, button) {
+  const text = document.getElementById(id).innerText;
+
+  navigator.clipboard.writeText(text).then(() => {
+    button.innerText = 'Copied';
+    setTimeout(() => {
+      button.innerText = 'Copy';
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+}
+
+
 // Detect outside clicks
 function handleOutsideClick(event) {
   const sidebar = document.querySelector('.sidebar');
